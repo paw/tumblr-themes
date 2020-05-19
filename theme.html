@@ -1,0 +1,1634 @@
+<html>
+<head>
+
+<!---
+
+DASHBOARD THEME
+
+To see the FA icons you can use, go here: https://fontawesome.com/icons?d=gallery&m=free
+Select a beta dashboard color scheme or set custom colors.
+
+--->
+ 
+
+<title>{Title}</title>
+{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+<link rel="apple-touch-ico" href="{PortraitURL-128}">
+<link rel="shortcut icon" href="{PortraitURL-128}" />
+<link rel="alternate" type="application/rss+xml" href="{RSS}" />
+
+{block:Options}
+<!-- custom images -->
+<meta name="image:Background" content="" />
+<meta name="image:Custom Header" content="" />
+    
+<!-- custom scheme colors -->
+<meta name="color:Background" content="#333">
+<meta name="color:Custom Posts" content="#cccccc" />
+<meta name="color:Custom Text" content="#000000" />
+<meta name="color:Custom Link" content="#999999" />
+<meta name="color:Custom Link Hover" content="#dcecf5" />
+<meta name="color:Custom Accents" content="#cccccc" />
+<meta name="color:Custom Audio Player BG" content="#000" />
+<meta name="color:Custom Audio Player Text" content="#cccccc" />
+<meta name="color:Custom Audio Player Progress" content="#181818" />
+<meta name="color:Custom Red" content="#ff492f" />
+<meta name="color:Custom Orange" content="#ff8a00" />
+<meta name="color:Custom Yellow" content="#e8d738" />
+<meta name="color:Custom Green" content="#00cf35" />
+<meta name="color:Custom Blue" content="#00b8ff" />
+<meta name="color:Custom Purple" content="#7c5cff" />
+<meta name="color:Custom Pink" content="#ff62ce" />
+    
+<!-- ifs -->
+<meta name="if:Search Bar" content="1"/>
+<meta name="if:Sidebar Links Rainbow" content="1" />
+<meta name="if:Rainbow Post Type Icons" content="1" />
+<meta name="if:Override Tumblr Appearance Options" content="0" />
+
+<!-- dropdowns -->
+<meta name="select:Color Scheme" content="mobile" title="Mobile Colors">
+<meta name="select:Color Scheme" content="true" title="True Blue">
+<meta name="select:Color Scheme" content="dark" title="Dark Mode">
+<meta name="select:Color Scheme" content="classic" title="Low-Contrast Classic">
+<meta name="select:Color Scheme" content="cement" title="Cement">
+<meta name="select:Color Scheme" content="cyber" title="Cybernetic">
+<meta name="select:Color Scheme" content="canary" title="Canary">
+<meta name="select:Color Scheme" content="custom" title="Custom">
+
+<meta name="select:Custom Header" content="mobile" title="No">
+<meta name="select:Custom Header" content="custom" title="Yes">
+
+<meta name="select:Override Show Header" content="show" title="Show">
+<meta name="select:Override Show Header" content="hide" title="Hide">
+    
+<meta name="select:Override Show Avatar" content="block" title="Show">
+<meta name="select:Override Show Avatar" content="none" title="Hide">
+
+<meta name="select:Override Avatar Shape" content="circle" title="Circle">
+<meta name="select:Override Avatar Shape" content="square" title="Square">
+    
+<meta name="select:Override Show Title" content="block" title="Show">
+<meta name="select:Override Show Title" content="none" title="Hide">
+
+<meta name="select:Override Show Description" content="block" title="Show">
+<meta name="select:Override Show Description" content="none" title="Hide">
+    
+<meta name="select:Background Size" content="cover" title="Full Size">
+<meta name="select:Background Size" content="auto" title="Tiling">
+    
+<meta name="select:Background Position" content="top left" title="top left">
+<meta name="select:Background Position" content="bottom left" title="bottom left">
+<meta name="select:Background Position" content="top right" title="top right">
+<meta name="select:Background Position" content="bottom right" title="bottom right">
+<meta name="select:Background Position" content="center" title="center">
+    
+<meta name="select:Font Size" title="16px" content="--font-size: 16px; --font-accent-size: 16px;" />
+<meta name="select:Font Size" title="18px" content="--font-size: 18px; --font-accent-size: 17px;" />
+<meta name="select:Font Size" title="20px" content="--font-size: 20px; --font-accent-size: 18px;" />
+<meta name="select:Font Size" title="22px" content="--font-size: 22px; --font-accent-size: 19px;" />
+<meta name="select:Font Size" title="25px" content="--font-size: 25px; --font-accent-size: 20px;" />
+    
+<meta name="select:Title Size" title="30px" content="30px" />
+<meta name="select:Title Size" title="40px" content="40px" />
+<meta name="select:Title Size" title="50px" content="50px" />
+    
+<!-- tooltips --->
+<meta name="select:Tooltips Position" content="top-end" title="Above & Right">
+<meta name="select:Tooltips Position" content="top" title="Above">
+<meta name="select:Tooltips Position" content="bottom-end" title="Underneath & Right">
+<meta name="select:Tooltips Position" content="bottom" title="Underneath">
+
+<meta name="select:Tooltips Follow Cursor" content="true" title="Yes">
+<meta name="select:Tooltips Follow Cursor" content="'horizontal'" title="Horizontal Only">
+<meta name="select:Tooltips Follow Cursor" content="'vertical'" title="Vertical Only">
+<meta name="select:Tooltips Follow Cursor" content="false" title="No">
+
+<meta name="select:Tooltips Animation" content="animation: 'fade',
+  inertia: 'false'," title="Fade">
+<meta name="select:Tooltips Animation" content="animation: 'shift-away',
+  inertia: 'false'," title="Shift-Away">
+<meta name="select:Tooltips Animation" content="animation: 'shift-away',
+  inertia: 'true'," title="Shift-Away + Inertia">
+<meta name="select:Tooltips Animation" content="animation: 'shift-toward',
+  inertia: 'false'," title="Shift-Toward">
+<meta name="select:Tooltips Animation" content="animation: 'shift-toward',
+  inertia: 'true'," title="Shift-Toward + Inertia">
+<meta name="select:Tooltips Animation" content="animation: 'scale',
+  inertia: 'false'," title="Scale">
+<meta name="select:Tooltips Animation" content="animation: 'scale',
+  inertia: 'true'," title="Scale + Inertia">
+<meta name="select:Tooltips Animation" content="animation: 'perspective',
+  inertia: 'false'," title="Perspective">
+<meta name="select:Tooltips Animation" content="animation: 'perspective',
+  inertia: 'true'," title="Perspective + Inertia">
+
+<!-- Links -->
+<meta name="text:Link 1 Title" content="Link 1" />
+<meta name="text:Link 1 URL" content="/" />
+<meta name="text:Link 2 Title" content="Link 2" />
+<meta name="text:Link 2 URL" content="/" />
+<meta name="text:Link 3 Title" content="Link 3" />
+<meta name="text:Link 3 URL" content="/" />
+<meta name="text:Link 4 Title" content="Link 4" />
+<meta name="text:Link 4 URL" content="/" />
+<meta name="text:Link 5 Title" content="Link 5" />
+<meta name="text:Link 5 URL" content="/" />
+<meta name="text:Link 6 Title" content="Link 6" />
+<meta name="text:Link 6 URL" content="/" />
+<meta name="text:Link 7 Title" content="Link 7" />
+<meta name="text:Link 7 URL" content="/" />
+    
+<!-- Link 1 -->
+<meta name="select:Link 1 Icon" content="fas fa-link" title="Link" />
+<meta name="select:Link 1 Icon" content="fas fa-external-link-alt" title="External Link" />
+<meta name="select:Link 1 Icon" content="fas fa-user-circle" title="About" />
+<meta name="select:Link 1 Icon" content="fas fa-info-circle" title="Info" />
+<meta name="select:Link 1 Icon" content="fas fa-home" title="Home" />
+<meta name="select:Link 1 Icon" content="fas fas fa-envelope" title="Ask Option 1" />
+<meta name="select:Link 1 Icon" content="fas fa-envelope-open-text" title="Ask Option 2" />
+<meta name="select:Link 1 Icon" content="fas fa-archive" title="Archive Option 1" />
+<meta name="select:Link 1 Icon" content="fas fa-history" title="Archive Option 2" />
+<meta name="select:Link 1 Icon" content="fas fa-tags" title="Tags" />
+<meta name="select:Link 1 Icon" content="fas fa-inbox" title="Submit" />
+<meta name="select:Link 1 Icon" content="hide" title="Custom Icon" />
+
+<!-- Link 2 -->
+<meta name="select:Link 2 Icon" content="fas fa-link" title="Link" />
+<meta name="select:Link 2 Icon" content="fas fa-external-link-alt" title="External Link" />
+<meta name="select:Link 2 Icon" content="fas fa-user-circle" title="About" />
+<meta name="select:Link 2 Icon" content="fas fa-info-circle" title="Info" />
+<meta name="select:Link 2 Icon" content="fas fa-home" title="Home" />
+<meta name="select:Link 2 Icon" content="fas fas fa-envelope" title="Ask Option 1" />
+<meta name="select:Link 2 Icon" content="fas fa-envelope-open-text" title="Ask Option 2" />
+<meta name="select:Link 2 Icon" content="fas fa-archive" title="Archive Option 1" />
+<meta name="select:Link 2 Icon" content="fas fa-history" title="Archive Option 2" />
+<meta name="select:Link 2 Icon" content="fas fa-tags" title="Tags" />
+<meta name="select:Link 2 Icon" content="fas fa-inbox" title="Submit" />
+<meta name="select:Link 2 Icon" content="hide" title="Custom Icon" />
+    
+<!-- Link 3 -->
+<meta name="select:Link 3 Icon" content="fas fa-link" title="Link" />
+<meta name="select:Link 3 Icon" content="fas fa-external-link-alt" title="External Link" />
+<meta name="select:Link 3 Icon" content="fas fa-user-circle" title="About" />
+<meta name="select:Link 3 Icon" content="fas fa-info-circle" title="Info" />
+<meta name="select:Link 3 Icon" content="fas fa-home" title="Home" />
+<meta name="select:Link 3 Icon" content="fas fas fa-envelope" title="Ask Option 1" />
+<meta name="select:Link 3 Icon" content="fas fa-envelope-open-text" title="Ask Option 2" />
+<meta name="select:Link 3 Icon" content="fas fa-archive" title="Archive Option 1" />
+<meta name="select:Link 3 Icon" content="fas fa-history" title="Archive Option 2" />
+<meta name="select:Link 3 Icon" content="fas fa-tags" title="Tags" />
+<meta name="select:Link 3 Icon" content="fas fa-inbox" title="Submit" />
+<meta name="select:Link 3 Icon" content="hide" title="Custom Icon" />
+    
+<!-- Link 4 -->
+<meta name="select:Link 4 Icon" content="fas fa-link" title="Link" />
+<meta name="select:Link 4 Icon" content="fas fa-external-link-alt" title="External Link" />
+<meta name="select:Link 4 Icon" content="fas fa-user-circle" title="About" />
+<meta name="select:Link 4 Icon" content="fas fa-info-circle" title="Info" />
+<meta name="select:Link 4 Icon" content="fas fa-home" title="Home" />
+<meta name="select:Link 4 Icon" content="fas fas fa-envelope" title="Ask Option 1" />
+<meta name="select:Link 4 Icon" content="fas fa-envelope-open-text" title="Ask Option 2" />
+<meta name="select:Link 4 Icon" content="fas fa-archive" title="Archive Option 1" />
+<meta name="select:Link 4 Icon" content="fas fa-history" title="Archive Option 2" />
+<meta name="select:Link 4 Icon" content="fas fa-tags" title="Tags" />
+<meta name="select:Link 4 Icon" content="fas fa-inbox" title="Submit" />
+<meta name="select:Link 4 Icon" content="hide" title="Custom Icon" />
+    
+<!-- Link 5 -->
+<meta name="select:Link 5 Icon" content="fas fa-link" title="Link" />
+<meta name="select:Link 5 Icon" content="fas fa-external-link-alt" title="External Link" />
+<meta name="select:Link 5 Icon" content="fas fa-user-circle" title="About" />
+<meta name="select:Link 5 Icon" content="fas fa-info-circle" title="Info" />
+<meta name="select:Link 5 Icon" content="fas fa-home" title="Home" />
+<meta name="select:Link 5 Icon" content="fas fas fa-envelope" title="Ask Option 1" />
+<meta name="select:Link 5 Icon" content="fas fa-envelope-open-text" title="Ask Option 2" />
+<meta name="select:Link 5 Icon" content="fas fa-archive" title="Archive Option 1" />
+<meta name="select:Link 5 Icon" content="fas fa-history" title="Archive Option 2" />
+<meta name="select:Link 5 Icon" content="fas fa-tags" title="Tags" />
+<meta name="select:Link 5 Icon" content="fas fa-inbox" title="Submit" />
+<meta name="select:Link 5 Icon" content="hide" title="Custom Icon" />
+    
+<!-- Link 6 -->
+<meta name="select:Link 6 Icon" content="fas fa-link" title="Link" />
+<meta name="select:Link 6 Icon" content="fas fa-external-link-alt" title="External Link" />
+<meta name="select:Link 6 Icon" content="fas fa-user-circle" title="About" />
+<meta name="select:Link 6 Icon" content="fas fa-info-circle" title="Info" />
+<meta name="select:Link 6 Icon" content="fas fa-home" title="Home" />
+<meta name="select:Link 6 Icon" content="fas fas fa-envelope" title="Ask Option 1" />
+<meta name="select:Link 6 Icon" content="fas fa-envelope-open-text" title="Ask Option 2" />
+<meta name="select:Link 6 Icon" content="fas fa-archive" title="Archive Option 1" />
+<meta name="select:Link 6 Icon" content="fas fa-history" title="Archive Option 2" />
+<meta name="select:Link 6 Icon" content="fas fa-tags" title="Tags" />
+<meta name="select:Link 6 Icon" content="fas fa-inbox" title="Submit" />
+<meta name="select:Link 6 Icon" content="hide" title="Custom Icon" />
+    
+<!-- Link 7 -->
+<meta name="select:Link 7 Icon" content="fas fa-link" title="Link" />
+<meta name="select:Link 7 Icon" content="fas fa-external-link-alt" title="External Link" />
+<meta name="select:Link 7 Icon" content="fas fa-user-circle" title="About" />
+<meta name="select:Link 7 Icon" content="fas fa-info-circle" title="Info" />
+<meta name="select:Link 7 Icon" content="fas fa-home" title="Home" />
+<meta name="select:Link 7 Icon" content="fas fas fa-envelope" title="Ask Option 1" />
+<meta name="select:Link 7 Icon" content="fas fa-envelope-open-text" title="Ask Option 2" />
+<meta name="select:Link 7 Icon" content="fas fa-archive" title="Archive Option 1" />
+<meta name="select:Link 7 Icon" content="fas fa-history" title="Archive Option 2" />
+<meta name="select:Link 7 Icon" content="fas fa-tags" title="Tags" />
+<meta name="select:Link 7 Icon" content="fas fa-inbox" title="Submit" />
+<meta name="select:Link 7 Icon" content="hide" title="Custom Icon" />
+    
+<!-- Custom Icon text fields -->
+<meta name="text:Link 1 Custom Icon" content="fas fa-heart" />
+<meta name="text:Link 2 Custom Icon" content="fas fa-star" />
+<meta name="text:Link 3 Custom Icon" content="fas fa-fire" />
+<meta name="text:Link 4 Custom Icon" content="fas fa-ghost" />
+<meta name="text:Link 5 Custom Icon" content="fas fa-paw" />
+<meta name="text:Link 6 Custom Icon" content="fas fa-sun" />
+<meta name="text:Link 7 Custom Icon" content="fas fa-moon" />
+
+{/block:Options}
+<!--
+Font Awesome Free 5.13.0
+https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt
+Change the version number to whatever version you want if it updates.-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+
+ </head>
+
+<style type="text/css" id="block-theme">
+
+:root {
+
+    --rgb-white: 255, 255, 255;
+    --rgb-black: 0, 0, 0;
+    --red: #ff492f;
+    --orange: #ff8a00;
+    --yellow: #e8d738;
+    --green: #00cf35;
+    --blue: #00b8ff;
+    --purple: #7c5cff;
+    --pink: #ff62ce;
+    
+    --title-font: {TitleFont};
+    --avatar-shape: {AvatarShape};
+    --mobile-header: url('{HeaderImage}');
+    --custom-header: url('{image:Custom Header}');
+    --background: url('{image:background}');
+
+    --font-family: 
+    "Favorit",
+    "Helvetica Neue",
+    "HelveticaNeue",
+    Helvetica,
+    Arial,
+    sans-serif;
+    
+    {select:font size}
+    --title-size: {select:Title Size};
+    
+    /*mobile appearance color scheme*/
+    --mobile-bg: {color:Background};
+    --mobile-post: {BackgroundColor};
+    --mobile-text: {TitleColor};
+    --mobile-accent: {AccentColor};
+    --mobile-accent-2: {AccentColor}99;
+    
+    --mobile-7: {TitleColor}11;
+    --mobile-13: {TitleColor}21;
+    --mobile-25: {TitleColor}40;
+    --mobile-40: {TitleColor}66;
+    --mobile-60: {TitleColor}99;
+    
+    --mobile-audio-text: #f1f1f1;
+    --mobile-audio-bg: #000;
+    --mobile-audio-progress: #181818;
+    
+    --mobile-grey: var(--mobile-accent-2);
+    --mobile-red: var(--red);
+    --mobile-orange: var(--orange);
+    --mobile-yellow: var(--yellow);
+    --mobile-green: var(--green);
+    --mobile-blue: var(--blue);
+    --mobile-purple: var(--purple);
+    --mobile-pink: var(--pink);
+    
+     /*custom appearance color scheme*/
+    --custom-bg: {color:Background};
+    --custom-post: {color:Custom Posts};
+    --custom-text: {color:Custom Text};
+    --custom-accent: {color:Custom Link};
+    --custom-accent-2: {color:Custom Link Hover};
+    
+    --custom-7: rgba({RGBcolor:Custom Accents}, 0.15);
+    --custom-13: rgba({RGBcolor:Custom Accents}, 0.30);
+    --custom-25: rgba({RGBcolor:Custom Accents}, 0.50);
+    --custom-40: rgba({RGBcolor:Custom Accents}, 0.75);
+    --custom-60: rgba({RGBcolor:Custom Accents}, 1.00);
+    
+    --custom-audio-text: {color:Custom Audio Player Text};
+    --custom-audio-bg: {color:Custom Audio Player BG};
+    --custom-audio-progress: {color:Custom Audio Player Progress};
+    
+    --custom-grey: {color:Custom Accents};
+    --custom-red: {color:Custom Red};
+    --custom-orange: {color:Custom Orange};
+    --custom-yellow: {color:Custom Yellow};
+    --custom-green: {color:Custom Green};
+    --custom-blue: {color:Custom Blue};
+    --custom-purple: {color:Custom Purple};
+    --custom-pink: {color:Custom Pink};
+    
+    /*canary dash color scheme*/
+    --canary-bg: #ffffe8;
+    --canary-post: #f0f0c0;
+    --canary-text: #000;
+    --canary-accent: var(--canary-text);
+    --canary-accent-2: #abab74;
+    
+    --canary-7: rgba(var(--rgb-black), 0.07);
+    --canary-13: rgba(var(--rgb-black), 0.13);
+    --canary-25: rgba(var(--rgb-black), 0.25);
+    --canary-40: rgba(var(--rgb-black), 0.40);
+    --canary-60: rgba(var(--rgb-black), 0.60);
+    
+    --canary-audio-text: var(--canary-text);
+    --canary-audio-bg: var(--canary-bg);
+    --canary-audio-progress: #f9f9bd;
+    
+    --canary-grey: var(--canary-accent-2);
+    --canary-red: var(--red);
+    --canary-orange: var(--orange);
+    --canary-yellow: var(--yellow);
+    --canary-green: var(--green);
+    --canary-blue: var(--blue);
+    --canary-purple: var(--purple);
+    --canary-pink: var(--pink);
+    
+    /*cement dash color scheme*/
+    --cement-bg: #f7f7f7;
+    --cement-post: #e9e9e9;
+    --cement-text: #000;
+    --cement-accent: #565656;
+    --cement-accent-2: #000;
+    
+    --cement-7: rgba(var(--rgb-black), 0.07);
+    --cement-13: rgba(var(--rgb-black), 0.13);
+    --cement-25: rgba(var(--rgb-black), 0.25);
+    --cement-40: rgba(var(--rgb-black), 0.40);
+    --cement-60: rgba(var(--rgb-black), 0.60);
+    
+    --cement-audio-text: var(--cement-text);
+    --cement-audio-bg: var(--cement-bg);
+    --cement-audio-progress: #d5d5d5;
+    
+    --cement-grey: var(--cement-accent-2);
+    --cement-red: var(--red);
+    --cement-orange: var(--orange);
+    --cement-yellow: var(--yellow);
+    --cement-green: var(--green);
+    --cement-blue: var(--blue);
+    --cement-purple: var(--purple);
+    --cement-pink: var(--pink);
+    
+    /*dark mode dash color scheme*/
+    --dark-bg: #000000;
+    --dark-post: #222;
+    --dark-text: rgb(var(--rgb-white));
+    --dark-accent: #b2b2b2;
+    --dark-accent-2: #616161;
+    
+    --dark-7: rgba(var(--rgb-white), 0.07);
+    --dark-13: rgba(var(--rgb-white), 0.13);
+    --dark-25: rgba(var(--rgb-white), 0.25);
+    --dark-40: rgba(var(--rgb-white), 0.40);
+    --dark-60: rgba(var(--rgb-white), 0.60);
+    
+    --dark-audio-text: var(--dark-text);
+    --dark-audio-bg: var(--dark-bg);
+    --dark-audio-progress: #181818;
+    
+    --dark-grey: var(--dark-accent-2);
+    --dark-red: var(--red);
+    --dark-orange: var(--orange);
+    --dark-yellow: var(--yellow);
+    --dark-green: var(--green);
+    --dark-blue: var(--blue);
+    --dark-purple: var(--purple);
+    --dark-pink: var(--pink);
+    
+    /*true blue dash color scheme*/
+    --true-bg: #001935;
+    --true-post: rgb(var(--rgb-white));
+    --true-text: rgb(var(--rgb-black));
+    --true-accent: #00b8ff;
+    --true-accent-2: #9e9e9e;
+    
+    --true-7: rgba(0, 0, 0, 0.07);
+    --true-13: rgba(0, 0, 0, 0.13);
+    --true-25: rgba(0, 0, 0, 0.25);
+    --true-40: rgba(0, 0, 0, 0.40);
+    --true-60: rgba(0, 0, 0, 0.60);
+    
+    --true-audio-text: var(--true-post);
+    --true-audio-bg: var(--true-bg);
+    --true-audio-progress: #244161;
+    
+    --true-grey: var(--true-accent-2);
+    --true-red: var(--red);
+    --true-orange: var(--orange);
+    --true-yellow: var(--yellow);
+    --true-green: var(--green);
+    --true-blue: var(--blue);
+    --true-purple: var(--purple);
+    --true-pink: var(--pink);
+    
+    /*cybernetic dash color scheme*/
+    --cyber-bg: #000;
+    --cyber-post: #222;
+    --cyber-text: #67FF38;
+    --cyber-accent: var(--cyber-text);
+    --cyber-accent-2: #176d1d;
+    
+    --cyber-7: rgba(103, 255, 56, 0.07);
+    --cyber-13: rgba(103, 255, 56, 0.13);
+    --cyber-25: rgba(103, 255, 56, 0.25);
+    --cyber-40: rgba(103, 255, 56, 0.40);
+    --cyber-60: rgba(103, 255, 56, 0.60);
+    
+    --cyber-audio-text: var(--cyber-text);
+    --cyber-audio-bg: var(--cyber-bg);
+    --cyber-audio-progress: #18450d;
+    
+    --cyber-grey: var(--cyber-text);
+    --cyber-red: var(--cyber-text);
+    --cyber-orange: var(--cyber-text);
+    --cyber-yellow: var(--cyber-text);
+    --cyber-green: var(--cyber-text);
+    --cyber-blue: var(--cyber-text);
+    --cyber-purple: var(--cyber-text);
+    --cyber-pink: var(--cyber-text);
+    
+    /*low-contrast classic dash color scheme*/
+    --classic-bg: #1a2735;
+    --classic-post: #47576d;
+    --classic-text: rgb(191, 191, 191);
+    --classic-accent: var(--classic-text);
+    --classic-accent-2: #a5cdff;
+    
+    --classic-7: rgba(255, 255, 255, 0.07);
+    --classic-13: rgba(255, 255, 255, 0.13);
+    --classic-25: rgba(255, 255, 255, 0.25);
+    --classic-40: rgba(255, 255, 255, 0.40);
+    --classic-60: rgba(255, 255, 255, 0.60);
+    
+    --classic-audio-text: var(--classic-text);
+    --classic-audio-bg: var(--classic-bg);
+    --classic-audio-progress: #2b405a;
+    
+    --classic-grey: var(--classic-accent-2);
+    --classic-red: var(--red);
+    --classic-orange: var(--orange);
+    --classic-yellow: var(--yellow);
+    --classic-green: var(--green);
+    --classic-blue: var(--blue);
+    --classic-purple: var(--purple);
+    --classic-pink: var(--pink);
+}
+
+/* Dashboard Font Favorite, code taken from dashboard main.css */
+@font-face {
+    font-family: Favorit;
+    src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-85-8ff1c986.woff2) format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: Favorit;
+    src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-85-italic-a883bce7.woff2) format("woff2");
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: Favorit;
+    src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-medium-be005cc5.woff2) format("woff2");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: Favorit;
+    src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-medium-italic-4d1adc26.woff2) format("woff2");
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@keyframes fadeAndScale {
+    from {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+/*fix issues with images/videos/etc imbeded in captions or text posts*/
+.npf_row {max-width:100%;}
+.npf_row figure, iframe {max-width:100%;}
+.post div.npf_row, body div.npf_row {margin:0;}
+figure, figure img, video { max-width:100% !important; height:auto !important; }
+figure #youtube_iframe, .tmblr-embed iframe, .inner img, #youtube_iframe, .video.wrapper iframe, .spotify_audio_player { max-width:100% !important; box-sizing:border-box; }
+figure #youtube_iframe, #youtube_iframe, .spotify_audio_player { display:block; margin:auto; }
+.soundcloud_audio_player, .spotify_audio_player { height: 80px; border: 1px solid var(--{select:Color Scheme}-7); }
+
+/*fix for rainbow npf text*/
+.npf_color_joey, .npf_color_monica, .npf_color_ross, .npf_color_rachel, .npf_color_niles, .npf_color_chandler {
+    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+    font-weight: bold;
+}
+
+/*general*/
+::selection {
+	background: var(--{select:Color Scheme}-bg);
+	color: var(--{select:Color Scheme}-text);
+}
+html { margin: 0; }
+body {
+    color:{color:text};
+    background-color: var(--background);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    text-align:left;
+    line-height: 1.5em;
+    margin: 5px;
+    overflow-x: hidden;
+}
+* { box-sizing:border-box; }
+
+/*mobile background*/
+#mbg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+body, #mbg {
+    background-color: var(--{select:Color Scheme}-bg);
+    background-image: var(--background);
+    background-position: {select:Background Position};
+    background-size: {select:background size};
+}
+
+/*basic body styling, & scrollbar styling for Gecko & Chromium browsers*/
+html, body {
+    scrollbar-color: var(--{select:Color Scheme}-text) var(--{select:Color Scheme}-post);
+}
+body * {
+    scrollbar-color: var(--{select:Color Scheme}-text) var(--{select:Color Scheme}-25);
+    scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+    width: 15px;
+    height: 5px;
+    background: var(--{select:Color Scheme}-post);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--{select:Color Scheme}-text);
+}
+body *::-webkit-scrollbar {
+    width: 10px;
+    background: var(--{select:Color Scheme}-25);
+}
+
+/* Links */
+a, a:visited, a:link, .post-controls.right .fa-ellipsis-h {
+    color: var(--{select:Color Scheme}-accent);
+    transition: 0.3s;
+}
+a:hover, a:focus, .user a:hover + a, .user a:focus + a, .post-controls.right .fa-ellipsis-h:hover, .post-controls.right .fa-ellipsis-h:focus, .post-controls.right .post-menu:focus-within .fa-ellipsis-h {
+    color: var(--{select:Color Scheme}-accent-2);
+}
+
+/* Headers */
+h1, h2, h3, h4, h5 { line-height: 125%; }
+h1 { font-size: 2.00em; }
+h2 { font-size: 1.50em; }
+h3 { font-size: 1.17em; }
+h4 { font-size: 1.00em; }
+h5 { font-size: 0.83em; }
+h6 { font-size: 0.67em; }
+
+/* Blockquotes */
+blockquote {
+    border-left: 3px solid var(--{select:Color Scheme}-13);
+    margin: 1em 0 1em 20px;
+    padding: 0px 20px;
+}
+
+/* Pre & Code */
+pre {
+    font-family: "Lucida Console", Monaco, monospace;
+    background: var(--black);
+    color: var(--cyber-text);
+    box-sizing:border-box;
+    word-wrap:break-word;
+    white-space:pre-wrap;
+    padding:5px 10px;
+    overflow:auto;
+    line-height:180%;
+	border: 1px solid var(--{select:Color Scheme}-25);
+	border-radius: 3px;
+}
+pre a, code a { var(--cyber-text) !important; }
+pre a:hover, code a:hover, pre a:focus, code a:focus { text-decoration: underline !important; }
+code {
+    font-family: "Lucida Console", Monaco, monospace;
+    background: var(--black);
+    color: var(--cyber-text);
+    font-family: "Lucida Console", Monaco, monospace;
+    line-height:180%;
+    display: block;
+    padding:5px 10px;
+	margin:3px auto;
+	max-width:100%;
+	border: 1px solid var(--{select:Color Scheme}-25);
+	border-radius: 3px;
+}
+pre code {padding:0px;display:block;}
+p code { display: inline-block }
+
+/* Tumblr Attribution */
+.tmblr-attribution {
+    background: var(--{select:Color Scheme}-7);
+    padding: 5px 10px;
+    margin: 0; border-radius: 3px;
+    font-size: var(--font-accent-size);
+    font-style: italic;
+}
+.tmblr-attribution::before {
+    content: "\f0aa";
+    font-family: "Font Awesome 5 Free";
+    font-weight: bold; margin-right: 6px;
+    font-style: normal;
+}
+
+/* Tippy.js Tooltip Theme*/
+.tippy-tooltip.dash-theme {
+    background-color: var(--{select:Color Scheme}-audio-progress);
+    color: var(--{select:Color Scheme}-audio-text);
+    padding: 5px 10px;
+    background-clip:padding-box;
+    white-space:pre-line;
+    margin:10px auto 5px auto;
+    border-radius: 0px;
+    font-size: 18px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
+    border-radius: 3px;
+}
+
+/* SIDEBAR */
+#sidebar {
+    position: fixed;
+    width: 370px;
+    height:100%;
+    left: calc(50% - 565px);
+    top: 0px;
+    z-index: 2;
+    overflow:auto;
+    scrollbar-width: none;
+    padding-bottom: 30px;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+#sidebar::-webkit-scrollbar { width: 0px; }
+#sidebar #info {
+    background-color: var(--{select:Color Scheme}-post);
+    color: var(--{select:Color Scheme}-text);
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 70px 0 20px 0;
+}
+/*blog description*/
+#description {
+    padding: 10px 10px;
+    max-height: 250px;
+    overflow: auto;
+    margin: 0 10px;
+}
+/*blog title*/
+#title {
+    font-size: var(--title-size);
+    line-height: 110%;
+    font-family: var(--title-font);
+    text-align: center;
+    font-weight: {TitleFontWeight};
+    padding: 10px;
+    margin-top: 15px;
+}
+/*header image*/
+#header {
+    width: 100%;
+    height:225px;
+    background: var(--{select:Color Scheme}-post) var(--{select:Custom Header}-header) no-repeat center;
+    {block:ShowHeaderImage}display: block;{/block:ShowHeaderImage}
+    {block:HideHeaderImage}display:none;{/block:HideHeaderImage}
+    background-size: cover;
+    transition: none;
+}
+/*avatar*/
+#icon {
+    display: block;
+    background: var(--{select:Color Scheme}-post);
+    background-size: cover;
+    padding: 10px;height: 125px; width: 125px;
+    z-index: 2;
+    {block:ShowHeaderImage}margin: -100px auto 0px auto;{/block:ShowHeaderImage}
+    {block:HideHeaderImage}margin: 0px auto 0px auto;{/block:HideHeaderImage}
+    overflow:hidden;
+    animation-duration: .3s;
+    animation-name: fadeAndScale;
+}
+#icon img { width: 105px; height: 105px; }
+#icon + #title { margin-top: 0; }
+
+/* appearance option overrides */
+#header.override-show { display: block;}
+#header.override-hide { display: none;}
+#icon.override { display: {select:Override Show Avatar}; }
+#header.override-show + #icon.override { margin: -100px auto 0px auto; }
+#header.override-hide + #icon.override { margin: 0px auto 0px auto;  }
+#title.override { display: {select:Override Show Title}; }
+#description.override {display: {select:Override Show Description}}
+
+/*sidebar links*/
+#links {
+    display: flex; flex-wrap: wrap;
+    justify-content: space-evenly; margin-top: 15px;
+}
+#links a { flex-grow: 1; border-top:1px solid var(--{select:Color Scheme}-7); display: inline-block;padding:10px 5px; text-align:center; height: 55px; font-size: 22px; display:flex; align-items:center; justify-content:center; text-decoration: none;
+}
+#links a:nth-child(odd) {background:var(--{select:Color Scheme}-7);border-right: 1px solid var(--{select:Color Scheme}-7);border-left: 1px solid var(--{select:Color Scheme}-7); }
+#links a:nth-child(even) {
+    background:var(--{select:Color Scheme}-13);
+}
+#links a:last-child { border-right: 0px; }
+#links a:first-child { border-left: 0px; }
+
+#links a span {transition: 0.1s margin}
+#links a:hover span {margin-bottom: 5px}
+
+{block:ifSidebarLinksRainbow}
+#links a:nth-child(1):hover { color: var(--{select:color scheme}-grey); }
+#links a:nth-child(2):hover { color: var(--{select:color scheme}-red); }
+#links a:nth-child(3):hover { color: var(--{select:color scheme}-orange); }
+#links a:nth-child(4):hover { color: var(--{select:color scheme}-green); }
+#links a:nth-child(5):hover { color: var(--{select:color scheme}-blue); }
+#links a:nth-child(6):hover { color: var(--{select:color scheme}-purple); }
+#links a:nth-child(7):hover { color: var(--{select:color scheme}-pink); }
+{/block:ifSidebarLinksRainbow}
+
+{block:ifSearchBar}
+/*search bar*/
+#search {
+    width: 100%;
+    padding: 20px 20px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+#search-form {
+    width:100%;
+    display:flex;
+	justify-content:center;
+    text-align:center;
+    margin:auto;
+	line-height:15px;
+}
+#search-input {
+    font-family: var(--font-family);
+    padding:5px;
+    background:none;
+    color: var(--{select:Color Scheme}-60);
+    font-style:italic;
+    transition:0.3s;
+    border:1px solid var(--{select:Color Scheme}-13);
+    background: var(--{select:Color Scheme}-7);
+    border-radius:3px;
+}
+#search-input:hover, #search-input:focus, #search-form:hover #search-input, #search-form:focus #search-input {
+    background: var(--{select:Color Scheme}-audio-progress);
+    color: var(--{select:Color Scheme}-audio-text);
+    border-color: var(--{select:Color Scheme}-25);
+}
+#search-button {
+    font-family:'Font Awesome 5 Free';
+	font-size: 20px;
+    font-weight:900;
+    border:0px;background:none;
+    color: var(--{select:Color Scheme}-accent);
+}
+#search-button:hover, #search-button:focus {
+    color:var(--{select:Color Scheme}-accent-2);
+}
+{/block:ifSearchBar}
+
+/* MAIN CONTENT */
+
+/* wrappers */
+#wrapper {
+    margin: 70px auto 0px auto;
+    width:550px;
+}
+#posts { margin-left:140px; }
+.section {
+    background-color: var(--{select:Color Scheme}-post);
+    color: var(--{select:Color Scheme}-text);
+}
+
+/*posts*/
+.post {
+    padding: 20px;
+    width: 540px;
+    margin: 0 auto 80px auto;
+    position:relative;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
+.post img {max-width:100%;}
+
+/*text posts*/
+.post-title {margin-top:0;display:block;}
+
+/*quote posts*/
+.quote-src { font-style: italic; }
+
+/*chat posts*/
+ul.chat {
+    list-style-type: none;
+    margin: 0; padding: 0;
+    border-radius: 3px; overflow: hidden;
+}
+ul.chat li { padding: 10px 20px; font-family: "Lucida Console", Monaco, monospace; }
+ul.chat li:nth-child(odd) { background: var(--{select:Color Scheme}-7); }
+ul.chat li:nth-child(even) { background: var(--{select:Color Scheme}-13); }
+ul.chat .label, a.more_notes_link { font-weight: bold; }
+
+/*ask posts*/
+.ask { display: flex; margin-bottom: 10px; justify-content: space-between; width:100%; }
+.ask-content {
+    background: var(--{select:Color Scheme}-7);
+    flex-grow: 1;
+    padding: 10px;
+    position:relative;
+    border-radius: 3px;
+}
+.ask-content::after {
+    content: '';
+    position:absolute;
+    top:10px;right:-8px;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+    border-left:8px solid var(--{select:Color Scheme}-7);
+}
+.asker {margin: 0px auto 10px; }
+.ask-portrait { margin-left: 18px; }
+.ask-portrait img { width: 40px; height:40px; border-radius: 3px; }
+
+/*link post*/
+.link-post { min-height:100px; }
+
+/* post permalink */
+.permalink { font-size: var(--font-accent-size); }
+.permalink .post-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 0 0;
+    
+}
+.post-controls.left { min-width: 40%;}
+.permalink .post-info .fas { font-size: 20px; }
+.tags .fas { font-size: 18px; }
+.datetime { margin: 40px 0 20px 0; position: relative; }
+.post-controls.right .controls > * { margin: 0 0 0 7px; }
+.post-controls.right .controls { margin-left: 3px; }
+.permalink .post-info .fa-clock {
+    margin: 0 8px 0 4px
+}
+.tags { margin: 5px 0 0 0; }
+.post-controls.right .controls { display: inline-block; }
+{block:ifRainbowPostTypeIcons}
+.post-controls.left .fa-align-left { color: var(--{select:color scheme}-grey); }
+.post-controls.left .fa-camera-retro, .post-controls.left .fa-images { color: var(--{select:color scheme}-red); }
+.post-controls.left .fa-quote-right { color: var(--{select:color scheme}-orange); }
+.post-controls.left .fa-link { color: var(--{select:color scheme}-green); }
+.post-controls.left .fa-comments, .post-controls.left .fa-envelope { color: var(--{select:color scheme}-blue); }
+.post-controls.left .fa-headphones-alt { color: var(--{select:color scheme}-purple); }
+.post-controls.left .fa-video { color: var(--{select:color scheme}-pink); }
+{/block:ifRainbowPostTypeIcons}
+
+/*permalink css menu*/
+.post-menu {
+    display: inline-block;
+    position: relative;
+}
+.post-menu span { cursor: pointer; transition: 0.3s; }
+.menu-content {
+    color: var(--{select:Color Scheme}-text);
+    background-color: var(--{select:Color Scheme}-bg);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
+    max-width: 0px;
+    overflow: hidden;
+    max-height:0px;
+    position:absolute;
+    bottom: 20px;
+    right: 10px;
+    opacity: 0;
+    pointer-events: auto;
+    transition: 1s;
+    font-size: var(--font-accent-size);
+    border-radius: 3px;
+}
+.menu-content ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align:center;
+}
+.menu-content li {
+    border-bottom: 1px solid var(--{select:Color Scheme}-13);
+    padding: 5px 10px;
+    white-space: nowrap;
+    min-width:125px;
+}
+.menu-content li a {
+    color: var(--{select:Color Scheme}-accent) !important;
+    display:block;
+}
+.menu-content li a:hover {
+    color: var(--{select:Color Scheme}-accent) !important;
+}
+.fa-ellipsis-h {text-decoration:none !important;}
+.menu-content ul li:last-child {
+    border-bottom :0px;
+}
+.post-menu:focus-within .menu-content {
+    display: block;
+    max-height: 250px;
+    opacity: 1;
+    pointer-events: auto;
+    max-width: 250px;
+}
+
+/*notes*/
+.notecontainer {
+    background: var(--{select:Color Scheme}-7);
+    padding: 10px;
+    border-radius: 3px;
+    font-size: var(--font-accent-size);
+}
+ol.notes { padding: 0px;list-style-type: none;margin: 0; }
+ol.notes li.note { margin: 0 0 15px 0; }
+ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 16px; height: 16px; border-radius:3px;}
+
+/*custom like button*/
+.custom-like-button {
+  position: relative;
+  bottom: -4px; left: -4px;
+  margin-top:-5px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.custom-like-button .like_button::before {
+  content:"\f004";
+  font-weight:normal;
+    font-family:'Font Awesome 5 Free' !important;
+    font-size:18px;
+    color: var(--{select:Color Scheme}-accent);
+    position: absolute;
+    top: 0px; left: 2px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: inline-block;
+    transition:0.3s;
+    -webkit-text-stroke: 4px transparent;
+    paint-order: stroke fill;
+}
+.custom-like-button:hover .like_button::before, .post-menu:hover, .post-menu:focus, .post-menu:focus-within {
+    color: var(--{select:Color Scheme}-accent-2); 
+}
+/*fill in heart with pink when post is liked*/
+.custom-like-button .like_button::after {
+  content:'\f004';
+  font-weight:bold;
+  color: var(--{select:Color Scheme}-red);
+  font-family:'Font Awesome 5 Free' !important;
+  font-size:16px;
+  top: 0px;left:3px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition:0.2s;
+  opacity:0;
+}
+.custom-like-button .like_button.liked::after {opacity:1;}
+.custom-like-button .like_button.liked::before { color: var(--{select:Color Scheme}-red)}
+.custom-like-button .like_button.liked:hover::before, .custom-like-button .like_button.liked:focus::before, .custom-like-button .like_button.liked:focus-within::before { color: var(--{select:Color Scheme}-accent-2)}
+.custom-like-button .like_button iframe {
+  opacity:0;
+  width:20px;
+  height:20px;
+  position:relative; z-index: 3;
+}
+.like_button {
+  width:20px;
+  height:20px;
+}
+
+/*reblog chain styling*/
+.inline-avatar {
+    vertical-align: middle;
+    overflow:hidden;
+    width:25px;
+    height:25px;
+    border-radius: 3px;
+}
+.user {
+    position:relative;
+    margin: 30px 0 15px 0;
+    font-weight:bold;
+}
+.user::before, .datetime::before {
+    content: '';
+    position: absolute;
+    background: var(--{select:Color Scheme}-13);
+    height:1px;
+    width: calc(100% + 40px);
+    top: -15px;
+    left: -20px;
+}
+.caption:first-child .reblogged:first-child > .user:first-of-type { margin-top:0; }
+.caption:first-child .reblogged:first-child > .user:first-of-type:before { display: none; }
+/*force wrap long usernames*/
+.username {
+    word-break:break-all;
+    margin-left:8px;
+    font-size: var(--font-accent-size);
+}
+/*add reblog icon to avatars in reblog chain*/
+.sub-icon-reblog {
+    position:relative;display:inline-block;
+    font-family:'Font Awesome 5 Free';
+    font-size: 13px;
+    line-height: 13px;
+}
+.sub-icon-reblog::after {
+    font-family:'Font Awesome 5 Free';
+    font-weight:bold;
+    content: "\f079";
+    color: var(--green);
+    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+    position:absolute;
+    right:-2px;
+    bottom:-2px;
+    height:12px;width:13px;
+    font-size: 13px;
+    background-size:cover;
+    line-height: 13px;
+}
+/*remove reblog icon from op*/
+.op-caption .sub-icon-reblog::after {display:none;}
+/*style deactivated users*/
+.deactivated { color: var(--link-color); }
+.deactivated:after {
+    content:'Deactivated';
+    text-transform:capitalize;
+    font-style:italic;
+    font-weight:normal;
+    letter-spacing:0px;
+    color:var(--post-title-color);
+    opacity:0;
+    transition:0.3s;
+    word-break:break-word;
+    margin-left: 5px;
+}
+.user:hover .deactivated:after, .user:focus .deactivated:after {opacity:0.7;}
+
+/* THEME CREDIT */
+#code {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    width: 25px;
+    font-size: 20px;
+    z-index:2;
+}
+#code .fas.fa-code {
+    color: var(--{select:Color Scheme}-text);
+    text-shadow: 1px 1px 0px var(--{select:Color Scheme}-post), -1px -1px 0px var(--{select:Color Scheme}-post), 1px -1px 0px var(--{select:Color Scheme}-post), -1px 1px 0px var(--{select:Color Scheme}-post)
+}
+
+/* PAGINATION */
+.pagination {
+    background: var(--{select:Color Scheme}-post);
+    width: 100%;
+    margin: 35px 0 0 0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+    font-size:25px;
+    line-height: 100%;
+    border-radius: 3px;
+}
+.pagination a, .pagination span {
+    margin: 5px 2px;
+}
+#posts .pagination { width: 540px; max-width: 100%; }
+.pagination .current_page { color: var(--{select:Color Scheme}-accent-2) }
+
+/* GENERAL STYLES */
+.right { text-align: right; }
+.float-left { float:left; }
+.float-right { float: right;}
+.clear { clear: both; }
+.middle { vertical-align: middle; }
+.hide, .tmblr-iframe--app-cta-button { display: none; }
+.video.wrapper > * { max-width:100% !important; }
+.center { text-align: center; }
+.read_more_container {margin: 10px auto;font-weight: bold;font-style: italic;}
+.read_more:after {content:'...';}
+.circle { border-radius: 100%; }
+.square { border-radius: 3px; }
+.custom-icon { display: none; }
+.hide + .custom-icon { display: inline-block;}
+.mobile-show { display: none }
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1300px) {
+    #sidebar {
+        left: calc(50% - 510px);
+    }
+    
+    #posts { margin-left: 200px; }
+}
+@media screen and (max-width: 1100px) {
+    .pagination.mobile-show { display: flex; margin: auto; }
+    .pagination.mobile-hide { display: none }
+    #code {
+        position: static;
+        display: block;
+        margin: 70px auto 50px auto;
+    }
+    
+    #sidebar {
+        position:static;
+        width: 540px;
+        display: block;
+        margin: 0 auto;
+        max-width:100%;
+        height: auto;
+    }
+    #sidebar #info {
+        margin-top: 50px;
+    }
+    #posts {
+        margin-left: 0;
+    }
+    
+    #wrapper, #posts, .post {
+        max-width:100%;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    #sidebar {
+        left: calc(50% - 615px);
+    }
+    
+    #posts { margin-left: 80px; }
+}
+
+/* AUDIO PLAYER CSS - for javascript */
+iframe.tumblr_audio_player {
+    opacity: 0;
+    transition: 0.3s opacity;
+    pointer-events:none;
+    border: 1px solid var(--{select:Color Scheme}-7);
+}
+iframe.tumblr_audio_player.loaded {
+    opacity: 1;
+    pointer-events:auto;
+}
+ 
+</style>
+
+<style id="custom-css">
+    {CustomCSS}
+</style>
+ 
+<body>
+
+<aside id="sidebar">
+<section id="info">
+    {block:ifNotOverrideTumblrAppearanceOptions}
+    
+        <a id="header" href="/" aria-label="Header Image Link. Returns you to the main page."></a>
+        
+        {block:ShowAvatar}<a href="/" title="{Title}" id="icon" class="{AvatarShape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="{AvatarShape}"></a>{/block:ShowAvatar}
+        
+            {block:ShowTitle}<div id="title">{Title}</div>{/block:ShowTitle}
+            {block:ShowDescription}<div id="description">{Description}</div>{/block:ShowDescription}
+            
+    {/block:ifNotOverrideTumblrAppearanceOptions}
+    
+    {block:ifOverrideTumblrAppearanceOptions}
+    
+            <a id="header" class="override-{select:Override Show Header}" href="/"></a>
+                
+            <a href="/" title="@{name}" id="icon" class="override {select:Override Avatar Shape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="override {select:Override Avatar Shape}"></a>
+    
+            <div id="title" class="override">{Title}</div>
+            <div id="description" class="override">{Description}</div>
+            
+    {/block:ifOverrideTumblrAppearanceOptions}
+    
+    {block:ifSearchBar}
+<!--search-->
+<section id="search" role="search">
+        <form action="/search" method="get" id="search-form">
+            <input type="text" name="q" value="{SearchQuery}" aria-label="Search Query" id="search-input" placeholder="Search...">
+            <input type="submit" value='' title="Search?" id="search-button">
+        </form>
+</section>{/block:ifSearchBar}
+
+    <nav id="links">
+        {block:iflink1url}<a href="{text:link 1 url}" title="{text:link 1 label}"><span class="{select:link 1 icon}"></span><span class="custom-icon {text:link 1 custom icon}"></span></a>
+        {/block:iflink1url}
+        
+        {block:iflink2url}
+        <a href="{text:link 2 url}" title="{text:link 2 label}"><span class="{select:link 2 icon}"></span><span class="custom-icon {text:link 2 custom icon}"></span></a>
+        {/block:iflink2url}
+        
+        {block:iflink3url}
+        <a href="{text:link 3 url}" title="{text:link 3 label}"><span class="{select:link 3 icon}"></span><span class="custom-icon {text:link 3 custom icon}"></span></a>
+        {/block:iflink3url}
+        
+        {block:iflink4url}
+        <a href="{text:link 4 url}" title="{text:link 4 label}"><span class="{select:link 4 icon}"></span><span class="custom-icon {text:link 4 custom icon}"></span></a>
+        {/block:iflink4url}
+        
+        {block:iflink5url}
+        <a href="{text:link 5 url}" title="{text:link 5 label}"><span class="{select:link 5 icon}"></span><span class="custom-icon {text:link 5 custom icon}"></span></a>
+        {/block:iflink5url}
+        
+        {block:iflink6url}
+        <a href="{text:link 6 url}" title="{text:link 6 label}"><span class="{select:link 6 icon}"></span><span class="custom-icon {text:link 6 custom icon}"></span></a>
+        {/block:iflink6url}
+        
+        {block:iflink7url}
+        <a href="{text:link 7 url}" title="{text:link 7 label}"><span class="{select:link 7 icon}"></span><span class="custom-icon {text:link 7 custom icon}"></span></a>
+        {/block:iflink7url}
+    </nav>
+</section> <!-- end blog info -->
+
+{block:Pagination}
+<nav class="pagination mobile-hide" role="navigation" aria-label="Pagination Navigation">
+      {block:PreviousPage}
+            <a href="{PreviousPage}" aria-label="{lang:Prev page}" title="{lang:Prev page}"><span class="fas fa-chevron-left"></span></a>
+      {/block:PreviousPage}
+
+      {block:JumpPagination length="5"}
+            {block:CurrentPage}
+                  <span class="current_page" tabindex="0" aria-label="Current Page, Page {PageNumber}." aria-current="true">{PageNumber}</span>
+            {/block:CurrentPage}
+
+            {block:JumpPage}
+                  <a class="jump_page" href="{URL}" aria-label="Go to page {PageNumber}.">{PageNumber}</a>
+            {/block:JumpPage}
+      {/block:JumpPagination}
+
+      {block:NextPage}
+            <a href="{NextPage}" aria-label="{lang:Next page}" title="{lang:Next page}"><span class="fas fa-chevron-right"></span></a>
+{/block:NextPage}
+</nav> <!-- end pagination -->
+{/block:Pagination}
+</aside> <!-- end sidebar -->
+
+<div id="wrapper">
+<main id="posts"> <!-- begin main content -->
+
+{block:Posts inlineMediaWidth="500"}
+<article class="post section" data-post-id="{PostID}">
+
+{block:Text}
+{block:Title}<h1 class="post-title">{Title}</h1>{/block:Title}
+{/block:Text}
+ 
+{block:Quote}
+<div class="quote"><h1><span class="fas fa-quote-left" style="vertical-align: top"></span> {Quote} <span class="fas fa-quote-right" style="font-size:60%; vertical-align: top"></span></h1><div class="quote-src right" style="padding-bottom: 10px">— {Source}</div></div>
+{/block:Quote}
+ 
+<!--{block:Link}
+<a href="{URL}"><h1 class="post-title">{Name} <big><i class="fas fa-external-link-alt"></i></big></h1></a>
+{/block:Link}-->
+
+{block:Link}
+<!-- link -->
+<a href="{URL}" class="link-post">{block:Thumbnail}
+<img class="photo image-post" src="{Thumbnail}" srcset="{Thumbnail-HighRes} 1000w" sizes="100w" alt="{PhotoAlt}"/>{/block:Thumbnail}
+<h1 class="post-title">{Name} <big><span class="fas fa-external-link-alt"></span></big></h1></a>
+{/block:Link}
+ 
+{block:Photo}
+<section class="photo wrapper">
+ {block:IndexPage}
+     <a href="javascript:;" onclick="Tumblr.Lightbox.init([{ width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, low_res: '{PhotoURL-500}', high_res: '{PhotoURL-HighRes}' }]); document.body.classList.toggle('tumblr_lightbox_active'); return false"><img srcset="{PhotoURL-400} 400w, {PhotoURL-500} 500w, {PhotoURL-HighRes} {PhotoWidth-HighRes}w" data-sizes="100w"
+     alt="{PhotoAlt}"></a>
+ {/block:IndexPage}
+ {block:PermalinkPage}
+    {LinkOpenTag}
+        <img src="{PhotoURL-500}" alt="{PhotoAlt}">
+        {LinkCloseTag}
+    {/block:PermalinkPage}
+</section>
+{/block:Photo}
+
+{block:Photoset}
+<section class="photoset wrapper">
+{Photoset-500}
+</section>
+{/block:Photoset}
+ 
+{block:Chat}
+<div class="inner" style ="margin: 8px 0px;"><ul class="chat">{block:Lines}<li class="user_{UserNumber}">{block:Label}<span class="label">{Label}</span>{/block:Label}&nbsp;{Line}</li>{/block:Lines}</div></ul>
+{/block:Chat}
+
+{block:Video}
+<section class="video wrapper">
+{Video-500}
+</section> 
+{/block:Video}
+ 
+{block:Answer}
+<!-- ask -->
+<div class="ask question">
+    <div class="ask-content">
+        <h3 class="asker"><strong class="middle">{lang:Asker asked 2}:</strong></h3>
+        <p>{Question}</p>
+    </div>
+    <div class="ask-portrait"><img src="{AskerPortraitURL-128}" alt="Asker Icon" aria-hidden="true"></div>
+</div>
+{block:Answerer}
+<div class="ask answer">
+    <div class="ask-content">
+        <h3 class="asker"><strong class="middle">{Answerer}:</strong></h3>
+        {Answer}
+    </div>
+    <div class="ask-portrait"><img src="{AnswererPortraitURL-128}" alt="Answerer Icon" aria-hidden="true"></div>
+</div>
+{/block:Answerer}
+{/block:Answer}
+ 
+ 
+{block:Audio}
+<!-- audio -->
+<div class="audio">
+{AudioEmbed}
+</div>
+{/block:Audio}
+        
+<!--- caption --->
+<section class="caption" aria-label="{block:Reblog}Post Reblog Chain.{/block:Reblog}">
+{block:Reblogs}
+<section class="reblogged{block:isOriginalEntry} op-caption{/block:isOriginalEntry}{block:Text} txt{/block:Text}{block:Chat} hide{/block:Chat}{block:Quote} hide{/block:Quote}">
+<p class="user">
+    {block:HasPermalink}<a href="{Permalink}" class="inline-avatar-link">{/block:HasPermalink}{block:HasAvatar}<span class="sub-icon-reblog"><img class="inline-avatar" src="{PortraitURL-64}" aria-label="user avatar"></span>{/block:HasAvatar}{block:HasPermalink}</a><a href="{Permalink}" aria-label="{username}'s Blog">{/block:HasPermalink}<span class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}">{Username}</span>{block:HasPermalink}</a>{/block:HasPermalink}
+</p>
+  <div>
+    {Body}
+  </div>
+</section>
+{/block:Reblogs}
+
+{block:NotReblog}
+<div class="original{block:Text} txt{/block:Text}{block:Chat} hide{/block:Chat}{block:Quote} hide{/block:Quote}{block:Answer} ask{/block:Answer}">
+    {block:Text}
+        <div class="op">{Body}</div>
+    {/block:Text}
+
+    {block:Photo}
+        {block:Caption}
+            <div class="op">{Caption}</div>
+        {/block:Caption}
+    {/block:Photo}
+
+    {block:Panorama}
+        {block:Caption}
+            <div class="op">{Caption}</div>{/block:Caption}
+    {/block:Panorama}
+
+    {block:Photoset}
+        {block:Caption}
+            <div class="op">{Caption}</div>{/block:Caption}
+    {/block:Photoset}
+
+    {block:Link}
+        {block:Description}
+            <div class="op">{Description}</div>{/block:Description}
+    {/block:Link}
+
+    {block:Audio}
+        {block:Caption}
+            <div class="op">{Caption}</div>{/block:Caption}
+    {/block:Audio}
+
+    {block:Video}
+        {block:Caption}
+            <div class="op">{Caption}</div>{/block:Caption}
+    {/block:Video}
+
+    {block:Answer}
+    <div class="ask answer">
+      <div class="ask-content">
+          {Replies}
+      </div>
+      <div class="ask-portrait"><img src="{PortraitURL-128}" alt="Answerer Icon" aria-hidden="true"></div>
+    </div>
+    {/block:Answer}
+</div>
+{/block:NotReblog}
+</section>
+
+<!-- permalink -->
+
+
+{block:Date}
+<footer class="permalink">
+
+<section class="post-info">
+<div class="post-controls left">{block:text}<span class="fas fa-align-left middle"></span>{/block:text}
+    {block:quote}<span class="fas fa-quote-right middle" aria-label="Text Post"></span>{/block:quote}
+    {block:link}<span class="fas fa-link middle" aria-label="Link Post"></span>{/block:link}
+    {block:photo}<span class="fas fa-camera-retro middle" aria-label="Photo Post"></span>{/block:photo}
+    {block:photoset}<span class="fas fa-images middle" aria-label="Photo Set Post"></span>{/block:photoset}
+    {block:video}<span class="fas fa-video middle" aria-label="Video Post"></span>{/block:video}
+    {block:audio}<span class="fas fa-headphones-alt middle" aria-label="Audio Post"></span>{/block:audio}
+    {block:chat}<span class="fas fa-comments middle" aria-label="Chat Post"></span>{/block:chat}
+    {block:answer}<span class="fas fa-envelope middle" aria-label="Ask Post"></span>{/block:answer}<i class="{select:Clock Icon Style} fa-clock middle"></i><a href="{Permalink}" title="{lang:Posted on DayOfMonth Month Year}" class="middle">{TimeAgo}</a></div><!--title="{ShortMonth} {DayOfMonthWithZero}, {Year}. {12HourWithZero}:{Minutes}{AmPm}."-->
+
+<div class="post-controls right">
+
+{block:NoteCount} <a href="{Permalink}#notes" class="middle">{NoteCountWithLabel}</a>{/block:NoteCount}
+
+<div class="controls">
+<div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Informational Links Relating to this post."></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post.">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}">{lang:Source}</a></li>{/block:ContentSource}<li class="open-in-app hide"><a href="#" class="share-item open-in-app" data-post="{PostID}">{lang:Open in app}</a></li><li><a href="{EmbedUrl}" class="share-item permalink">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
+
+<a href="{ReblogURL}" target="_blank" class="details"><span class="fas fa-retweet middle"></span></a>
+
+<div class="custom-like-button" aria-label="Interact with the like iframe to like the post." role="button">
+  {LikeButton}
+</div></div>
+
+</div>
+</section>
+
+
+{block:HasTags}
+<section class="tags"><span class="fas fa-tags middle"></span>{block:Tags}
+&nbsp;<a href="{TagURL}">#{Tag}</a>{/block:Tags}</section>{/block:HasTags}
+
+<!-- end info -->
+
+{block:permalinkpage}
+<section id="notes" class="datetime center">{lang:Posted on DayOfWeek the DayOfMonthWithSuffix of Month Year at FormattedTime}.<br>{NoteCountWithLabel}.</section>
+{/block:permalinkpage}
+</footer>
+ 
+   {block:PostNotes}
+<section class="notes section">
+        <div class="notecontainer">{PostNotes}</div>
+</section>
+    {/block:PostNotes}
+{/block:Date}
+ 
+</article> <!-- end post -->
+{/block:Posts}
+
+
+{block:Pagination}
+<nav class="pagination mobile-show" role="navigation" aria-label="Pagination Navigation">
+      {block:PreviousPage}
+            <a href="{PreviousPage}" aria-label="{lang:Prev page}" title="{lang:Prev page}"><span class="fas fa-chevron-left"></span></a>
+      {/block:PreviousPage}
+
+      {block:JumpPagination length="5"}
+            {block:CurrentPage}
+                  <span class="current_page" tabindex="0" aria-label="Current Page, Page {PageNumber}." aria-current="true">{PageNumber}</span>
+            {/block:CurrentPage}
+
+            {block:JumpPage}
+                  <a class="jump_page" href="{URL}" aria-label="Go to page {PageNumber}.">{PageNumber}</a>
+            {/block:JumpPage}
+      {/block:JumpPagination}
+
+      {block:NextPage}
+            <a href="{NextPage}" aria-label="{lang:Next page}" title="{lang:Next page}"><span class="fas fa-chevron-right"></span></a>
+{/block:NextPage}
+</nav> <!-- end pagination -->
+{/block:Pagination}
+
+</main> <!-- end post wrapper -->
+</div> <!-- end centering wrapper -->
+
+<!-- bg container, for mobile compatibility -->
+<div id="mbg"></div>
+
+<!--credit-->
+<footer id="code"><span class="fas fa-code" data-tippy-content='<i>FAMILIAR FACADE</i><br>A theme by SNARL.<br><a href="/" target="_blank">theme garden themes</a>.<br><a href="/" target="_blank">other themes</a>.'></span></footer>
+ 
+
+<!--- JAVASCRIPT
+DO NOT REMOVE --->
+
+<!--
+tippy.js ver 4.3.5, for styling tooltips.
+popper.js is necessary for tippy to work.
+https://github.com/atomiks/tippyjs  -->
+<script src="https://static.tumblr.com/4oju7qi/MgOq15ygx/popper_1.16.0_min.js"></script>
+<script src="https://static.tumblr.com/4oju7qi/jyfq15ygl/tippy_4.3.5_min.js"></script>
+<script>
+tippy('[title]', {
+  content(reference) {
+    const title = reference.getAttribute('title')
+    reference.removeAttribute('title')
+    return title
+  },
+  theme: 'dash',
+  placement: '{select:Tooltips Position}',
+  animateFill: false,
+  {select:Tooltips Animation}
+  followCursor: {select:Tooltips Follow Cursor},
+  delay: [0, 50],
+  boundary: 'window'
+});
+
+tippy('[data-tippy-content]', {
+  theme: 'dash',
+  animateFill: false,
+  {select:Tooltips Animation}
+  followCursor: false,
+  delay: [0, 50],
+  boundary: 'window',
+  touch: ["hold"],
+  interactive: true
+});
+</script> <!-- end tippy -->
+
+<!-- style the iframe audio player -->
+<script>
+// access to iframe contents
+function iframeRef( frameRef ) {
+    return frameRef.contentWindow
+        ? frameRef.contentWindow.document
+        : frameRef.contentDocument
+}
+var ready = (callback) => {
+    if (document.readyState != "loading") callback();
+    else document.addEventListener("DOMContentLoaded", callback);
+}
+ready(() => {
+    var audioPlayers = document.querySelectorAll("iframe.tumblr_audio_player");
+    var bg = getComputedStyle(document.documentElement).getPropertyValue('--{select:Color Scheme}-audio-bg');
+    var progress = getComputedStyle(document.documentElement).getPropertyValue('--{select:Color Scheme}-audio-progress');
+    var text = getComputedStyle(document.documentElement).getPropertyValue('--{select:Color Scheme}-audio-text');
+    audioPlayers.forEach(function(ele){
+        ele.addEventListener('load', function(e){
+            //when audio player loads, inject style inside
+            var inside = iframeRef(ele);
+            var style = inside.createElement("style");
+            style.innerHTML = ':root { --audio-player-bg: ' + bg + '; --audio-player-progress:' + progress + '; --audio-player-one: ' + text + '; --audio-player-two: ' + text + '; } @font-face { font-family: Favorit; src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-85-8ff1c986.woff2) format("woff2"); font-style: normal; font-weight: 400; font-display: swap;} @font-face { font-family: Favorit;src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-medium-be005cc5.woff2) format("woff2");font-style: normal; font-weight: 700;font-display: swap;} .audio-player{background:var(--audio-player-bg) !important;font-family: "Favorit" !important;max-width:100% !important;margin-left:0px !important;} .native-audio-container {left:0px !important;max-width:100% !important;} .audio_player_iframe {max-width:100% !important;overflow:hidden !important;} .audio-player.has-art {margin-right:85px !important;} .audio-player .audio-info .track-artist, .icon .icon_pause, .audio-player {color:var(--audio-player-one) !important;} .audio-player .audio-info .track-name, .icon .icon_play{color:var(--audio-player-two) !important;} .audio-player .progress { background:var(--audio-player-progress) !important; } .audio-player .audio-info .track-name {font-size: 18px}';
+            inside.getElementsByTagName("head")[0].appendChild(style);
+            ele.classList.add("loaded");
+      });
+    });
+});
+</script>
+
+ 
+</body>
+</html>
