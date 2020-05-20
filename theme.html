@@ -24,12 +24,12 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="image:Custom Header" content="" />
     
 <!-- custom scheme colors -->
-<meta name="color:Background" content="#333">
-<meta name="color:Custom Posts" content="#cccccc" />
+<meta name="color:Background" content="#39353e">
+<meta name="color:Custom Posts" content="#faede2" />
 <meta name="color:Custom Text" content="#000000" />
-<meta name="color:Custom Link" content="#999999" />
-<meta name="color:Custom Link Hover" content="#dcecf5" />
-<meta name="color:Custom Accents" content="#cccccc" />
+<meta name="color:Custom Link" content="#c6597d" />
+<meta name="color:Custom Link Hover" content="#444397" />
+<meta name="color:Custom Accents" content="#21a390" />
 <meta name="color:Custom Audio Player BG" content="#000" />
 <meta name="color:Custom Audio Player Text" content="#cccccc" />
 <meta name="color:Custom Audio Player Progress" content="#181818" />
@@ -46,10 +46,10 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="if:Sidebar Links Rainbow" content="1" />
 <meta name="if:Rainbow Post Type Icons" content="1" />
 <meta name="if:Dashboard Reblog Icon" content="1" />
-<meta name="if:Override Tumblr Appearance Options" content="0" />
+<meta name="if:Override Tumblr Appearance Settings" content="0" />
 
 <!-- dropdowns -->
-<meta name="select:Color Scheme" content="mobile" title="Mobile Colors">
+<meta name="select:Color Scheme" content="mobile" title="Tumblr Appearance">
 <meta name="select:Color Scheme" content="true" title="True Blue">
 <meta name="select:Color Scheme" content="dark" title="Dark Mode">
 <meta name="select:Color Scheme" content="classic" title="Low-Contrast Classic">
@@ -457,9 +457,9 @@ Change the version number to whatever version you want if it updates.-->
     --cyber-40: rgba(103, 255, 56, 0.40);
     --cyber-60: rgba(103, 255, 56, 0.60);
     
-    --cyber-audio-text: var(--cyber-text);
-    --cyber-audio-bg: var(--cyber-bg);
-    --cyber-audio-progress: #18450d;
+    --cyber-audio-text: var(--cyber-post);
+    --cyber-audio-bg: var(--cyber-text);
+    --cyber-audio-progress: #4DBF2A;
     
     --cyber-grey: var(--cyber-text);
     --cyber-red: var(--cyber-text);
@@ -555,8 +555,8 @@ figure #youtube_iframe, #youtube_iframe, .spotify_audio_player { display:block; 
 
 /*general*/
 ::selection {
-	background: var(--{select:Color Scheme}-bg);
-	color: var(--{select:Color Scheme}-text);
+	background: var(--{select:Color Scheme}-accent);
+	color: var(--{select:Color Scheme}-post);
 }
 html { margin: 0; }
 body {
@@ -688,9 +688,16 @@ p code { display: inline-block }
     white-space:pre-line;
     margin:10px auto 5px auto;
     border-radius: 0px;
-    font-size: 18px;
+    font-size: var(--font-accent-size);
     box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
     border-radius: 3px;
+}
+.tippy-tooltip.dash-theme a, .tippy-tooltip.dash-theme a:visited {
+    color: var(--{select:Color Scheme}-blue);
+    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+}
+.tippy-tooltip.dash-theme a:hover, .tippy-tooltip.dash-theme a:focus {
+    color: var(--{select:Color Scheme}-purple);
 }
 
 /* SIDEBAR */
@@ -713,7 +720,7 @@ p code { display: inline-block }
     width: 100%;
     border-radius: 3px;
     overflow: hidden;
-    margin: 70px 0 20px 0;
+    margin: 50px 0 20px 0;
 }
 /*blog description*/
 #description {
@@ -735,7 +742,7 @@ p code { display: inline-block }
 /*header image*/
 #header {
     width: 100%;
-    height:225px;
+    height:200px;
     background: var(--{select:Color Scheme}-post) var(--{select:Custom Header}-header) no-repeat center;
     {block:ShowHeaderImage}display: block;{/block:ShowHeaderImage}
     {block:HideHeaderImage}display:none;{/block:HideHeaderImage}
@@ -845,7 +852,7 @@ p code { display: inline-block }
 
 /* wrappers */
 #wrapper {
-    margin: 70px auto 0px auto;
+    margin: 50px auto 0px auto;
     width:550px;
 }
 #posts { margin-left:140px; }
@@ -1080,7 +1087,8 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     left: -20px;
 }
 .caption:first-child .reblogged:first-child > .user:first-of-type { margin-top:0; }
-.caption:first-child .reblogged:first-child > .user:first-of-type:before { display: none; }
+.caption:first-child .reblogged:first-child > .user:first-of-type:before, .wrapper + .caption > .op-caption > .user:first-of-type:before { display: none; }
+.wrapper + .caption > .op-caption > .user:first-of-type { margin-top: 15px; }
 /*force wrap long usernames*/
 .username {
     word-break:break-all;
@@ -1217,6 +1225,9 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     #wrapper, #posts, .post {
         max-width:100%;
     }
+    #header {
+        height: 225px;
+    }
 }
 
 @media screen and (min-width: 1800px) {
@@ -1249,7 +1260,7 @@ iframe.tumblr_audio_player.loaded {
 
 <aside id="sidebar">
 <section id="info">
-    {block:ifNotOverrideTumblrAppearanceOptions}
+    {block:ifNotOverrideTumblrAppearanceSettings}
     
         <a id="header" href="/" aria-label="Header Image Link. Returns you to the main page."></a>
         
@@ -1258,9 +1269,9 @@ iframe.tumblr_audio_player.loaded {
             {block:ShowTitle}<div id="title">{Title}</div>{/block:ShowTitle}
             {block:ShowDescription}<div id="description">{Description}</div>{/block:ShowDescription}
             
-    {/block:ifNotOverrideTumblrAppearanceOptions}
+    {/block:ifNotOverrideTumblrAppearanceSettings}
     
-    {block:ifOverrideTumblrAppearanceOptions}
+    {block:ifOverrideTumblrAppearanceSettings}
     
             <a id="header" class="override-{select:Override Show Header}" href="/"></a>
                 
@@ -1269,7 +1280,7 @@ iframe.tumblr_audio_player.loaded {
             <div id="title" class="override">{Title}</div>
             <div id="description" class="override">{Description}</div>
             
-    {/block:ifOverrideTumblrAppearanceOptions}
+    {/block:ifOverrideTumblrAppearanceSettings}
     
     {block:ifSearchBar}
 <!--search-->
@@ -1340,7 +1351,7 @@ iframe.tumblr_audio_player.loaded {
 <article class="post section" data-post-id="{PostID}">
 
 {block:Text}
-{block:Title}<h1 class="post-title">{Title}</h1>{/block:Title}
+{block:Title}<h1 class="post-title wrapper">{Title}</h1>{/block:Title}
 {/block:Text}
  
 {block:Quote}
@@ -1353,7 +1364,7 @@ iframe.tumblr_audio_player.loaded {
 
 {block:Link}
 <!-- link -->
-<a href="{URL}" class="link-post">{block:Thumbnail}
+<a href="{URL}" class="link-post wrapper">{block:Thumbnail}
 <img class="photo image-post" src="{Thumbnail}" srcset="{Thumbnail-HighRes} 1000w" sizes="100w" alt="{PhotoAlt}"/>{/block:Thumbnail}
 <h1 class="post-title">{Name} <big><span class="fas fa-external-link-alt"></span></big></h1></a>
 {/block:Link}
@@ -1411,7 +1422,7 @@ iframe.tumblr_audio_player.loaded {
  
 {block:Audio}
 <!-- audio -->
-<div class="audio">
+<div class="audio wrapper">
 {AudioEmbed}
 </div>
 {/block:Audio}
@@ -1563,7 +1574,7 @@ iframe.tumblr_audio_player.loaded {
 <div id="mbg"></div>
 
 <!--credit-->
-<footer id="code"><span class="fas fa-code" data-tippy-content='<i>Spectrum.</i><br>A theme by SNARL.<br><a href="/" target="_blank">theme garden themes</a>.<br><a href="/" target="_blank">other themes</a>.'></span></footer>
+<footer id="code"><span class="fas fa-code" data-tippy-content='<i>Spectrum.</i><br>A theme by SNARL.<br><a href="https://tumblr.com/themes/by/snarlier" target="_blank">theme garden themes</a>.<br><a href="https://snarlier.tumblr.com/tagged/my+themes" target="_blank">other themes</a>.'></span></footer>
  
 
 <!--- JAVASCRIPT
