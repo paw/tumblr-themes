@@ -1,11 +1,12 @@
 # tumblr-dash-theme
 tumblr theme emulating the dashboard's look
 
-## working title
+## working title:
 - Spectrum
 
-## TBA
+## WIP:
 - link post styling
-- headers for search query / tagged pages
-- accessibility jump menu
-- 
+- add headers for search query / tagged pages
+- jump menu for accessibility
+
+## view live [here](https://spectrumtheme.tumblr.com/)
