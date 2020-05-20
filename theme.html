@@ -702,11 +702,11 @@ p code { display: inline-block }
 
 /* SIDEBAR */
 #sidebar {
-    position: fixed;
+    position: sticky;
     width: 370px;
-    height:100%;
-    left: calc(50% - 565px);
-    top: 0px;
+    float:left;
+    margin-left: -280px;
+    top: 50px;
     z-index: 2;
     overflow:auto;
     scrollbar-width: none;
@@ -720,7 +720,7 @@ p code { display: inline-block }
     width: 100%;
     border-radius: 3px;
     overflow: hidden;
-    margin: 50px 0 20px 0;
+    margin: 0px 0 20px 0;
 }
 /*blog description*/
 #description {
@@ -777,7 +777,7 @@ p code { display: inline-block }
 /*sidebar links*/
 #links {
     display: flex; flex-wrap: wrap;
-    justify-content: space-evenly; margin-top: 15px;
+    justify-content: space-around; margin-top: 15px;
 }
 #links a { flex-grow: 1; border-top:1px solid var(--{select:Color Scheme}-7); display: inline-block;padding:10px 5px; text-align:center; height: 55px; font-size: 22px; display:flex; align-items:center; justify-content:center; text-decoration: none;
 }
@@ -908,7 +908,7 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
 }
 .asker {margin: 0px auto 10px; }
 .ask-portrait { margin-left: 18px; }
-.ask-portrait img { width: 40px; height:40px; border-radius: 3px; }
+.ask-portrait img { width: 40px; height:40px; border-radius: 3px; max-width: none; }
 
 /*link post*/
 .link-post { min-height:100px; }
@@ -1167,12 +1167,18 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     font-weight: bold;
     font-size:25px;
     line-height: 100%;
     border-radius: 3px;
+}
+/* fix for edge bug. space-evenly on every browser but edge. */
+@supports not (-ms-ime-align: auto) {
+    .pagination, #links {
+        justify-content: space-evenly;
+    }
 }
 .pagination a, .pagination span {
     margin: 5px 2px;
@@ -1186,6 +1192,7 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 .float-right { float: right;}
 .clear { clear: both; }
 .middle { vertical-align: middle; }
+.inline-block { display: inline-block; }
 .hide, .tmblr-iframe--app-cta-button { display: none; }
 .video.wrapper > * { max-width:100% !important; }
 .center { text-align: center; }
@@ -1200,7 +1207,7 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 /* MEDIA QUERIES */
 @media screen and (max-width: 1300px) {
     #sidebar {
-        left: calc(50% - 510px);
+        margin-left: -210px;
     }
     
     #posts { margin-left: 200px; }
@@ -1216,14 +1223,12 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     
     #sidebar {
         position:static;
+        float:none;
         width: 540px;
         display: block;
         margin: 0 auto;
         max-width:100%;
         height: auto;
-    }
-    #sidebar #info {
-        margin-top: 50px;
     }
     #posts {
         margin-left: 0;
@@ -1239,10 +1244,10 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 
 @media screen and (min-width: 1800px) {
     #sidebar {
-        left: calc(50% - 615px);
+        margin-left: -320px;
     }
     
-    #posts { margin-left: 80px; }
+    #posts { margin-left: 100px; }
 }
 
 /* AUDIO PLAYER CSS - for javascript */
@@ -1265,6 +1270,7 @@ iframe.tumblr_audio_player.loaded {
  
 <body>
 
+<div id="wrapper">
 <aside id="sidebar">
 <section id="info">
     {block:ifNotOverrideTumblrAppearanceSettings}
@@ -1299,31 +1305,31 @@ iframe.tumblr_audio_player.loaded {
 </section>{/block:ifSearchBar}
 
     <nav id="links">
-        {block:iflink1url}<a href="{text:link 1 url}" title="{text:link 1 title}"><span class="{select:link 1 icon}"></span><span class="custom-icon {text:link 1 custom icon}"></span></a>
+        {block:iflink1url}<a href="{text:link 1 url}" title="{text:link 1 title}" aria-label="{text:link 1 title}"><span class="{select:link 1 icon}"></span><span class="custom-icon {text:link 1 custom icon}"></span></a>
         {/block:iflink1url}
         
         {block:iflink2url}
-        <a href="{text:link 2 url}" title="{text:link 2 title}"><span class="{select:link 2 icon}"></span><span class="custom-icon {text:link 2 custom icon}"></span></a>
+        <a href="{text:link 2 url}" title="{text:link 2 title}" aria-label="{text:link 2 title}"><span class="{select:link 2 icon}"></span><span class="custom-icon {text:link 2 custom icon}"></span></a>
         {/block:iflink2url}
         
         {block:iflink3url}
-        <a href="{text:link 3 url}" title="{text:link 3 title}"><span class="{select:link 3 icon}"></span><span class="custom-icon {text:link 3 custom icon}"></span></a>
+        <a href="{text:link 3 url}" title="{text:link 3 title}" aria-label="{text:link 3 title}"><span class="{select:link 3 icon}"></span><span class="custom-icon {text:link 3 custom icon}"></span></a>
         {/block:iflink3url}
         
         {block:iflink4url}
-        <a href="{text:link 4 url}" title="{text:link 4 title}"><span class="{select:link 4 icon}"></span><span class="custom-icon {text:link 4 custom icon}"></span></a>
+        <a href="{text:link 4 url}" title="{text:link 4 title}" aria-label="{text:link 4 title}"><span class="{select:link 4 icon}"></span><span class="custom-icon {text:link 4 custom icon}"></span></a>
         {/block:iflink4url}
         
         {block:iflink5url}
-        <a href="{text:link 5 url}" title="{text:link 5 title}"><span class="{select:link 5 icon}"></span><span class="custom-icon {text:link 5 custom icon}"></span></a>
+        <a href="{text:link 5 url}" title="{text:link 5 title}" aria-label="{text:link 5 title}"><span class="{select:link 5 icon}"></span><span class="custom-icon {text:link 5 custom icon}"></span></a>
         {/block:iflink5url}
         
         {block:iflink6url}
-        <a href="{text:link 6 url}" title="{text:link 6 title}"><span class="{select:link 6 icon}"></span><span class="custom-icon {text:link 6 custom icon}"></span></a>
+        <a href="{text:link 6 url}" title="{text:link 6 title}" aria-label="{text:link 6 title}"><span class="{select:link 6 icon}"></span><span class="custom-icon {text:link 6 custom icon}"></span></a>
         {/block:iflink6url}
         
         {block:iflink7url}
-        <a href="{text:link 7 url}" title="{text:link 7 title}"><span class="{select:link 7 icon}"></span><span class="custom-icon {text:link 7 custom icon}"></span></a>
+        <a href="{text:link 7 url}" title="{text:link 7 title}"><span class="{select:link 7 icon}" aria-label="{text:link 7 title}"></span><span class="custom-icon {text:link 7 custom icon}"></span></a>
         {/block:iflink7url}
     </nav>
 </section> <!-- end blog info -->
@@ -1351,7 +1357,7 @@ iframe.tumblr_audio_player.loaded {
 {/block:Pagination}
 </aside> <!-- end sidebar -->
 
-<div id="wrapper">
+
 <main id="posts"> <!-- begin main content -->
 
 {block:Posts inlineMediaWidth="500"}
@@ -1511,7 +1517,7 @@ iframe.tumblr_audio_player.loaded {
     {block:video}<span class="fas fa-video middle" aria-label="Video Post"></span>{/block:video}
     {block:audio}<span class="fas fa-headphones-alt middle" aria-label="Audio Post"></span>{/block:audio}
     {block:chat}<span class="fas fa-comments middle" aria-label="Chat Post"></span>{/block:chat}
-    {block:answer}<span class="fas fa-envelope middle" aria-label="Ask Post"></span>{/block:answer}<i class="fas fa-clock middle"></i><a href="{Permalink}" title="{lang:Posted on DayOfMonth Month Year}" class="middle">{TimeAgo}</a></div><!--title="{ShortMonth} {DayOfMonthWithZero}, {Year}. {12HourWithZero}:{Minutes}{AmPm}."-->
+    {block:answer}<span class="fas fa-envelope middle" aria-label="Ask Post"></span>{/block:answer}<i class="fas fa-clock middle"></i><a href="{Permalink}" title="{lang:Posted on DayOfMonth Month Year}" class="middle inline-block">{TimeAgo}</a></div><!--title="{ShortMonth} {DayOfMonthWithZero}, {Year}. {12HourWithZero}:{Minutes}{AmPm}."-->
 
 <div class="post-controls right">
 
@@ -1550,6 +1556,8 @@ iframe.tumblr_audio_player.loaded {
  
 </article> <!-- end post -->
 {/block:Posts}
+
+<div class="clear"></div>
 
 
 {block:Pagination}
