@@ -3,7 +3,8 @@
 
 <!---
 
-DASHBOARD THEME
+SPECTRUM THEME
+by @snarlier
 
 To see the FA icons you can use, go here: https://fontawesome.com/icons?d=gallery&m=free
 Select a beta dashboard color scheme or set custom colors.
@@ -703,17 +704,13 @@ p code { display: inline-block }
 /* SIDEBAR */
 #sidebar {
     position: sticky;
-    width: 370px;
-    float:left;
-    margin-left: -280px;
+    width: 400px;
+    margin-left: -110px;
     top: 50px;
     z-index: 2;
-    overflow:auto;
-    scrollbar-width: none;
+    height: 100%;
     padding-bottom: 30px;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
-#sidebar::-webkit-scrollbar { width: 0px; }
 #sidebar #info {
     background-color: var(--{select:Color Scheme}-post);
     color: var(--{select:Color Scheme}-text);
@@ -853,9 +850,10 @@ p code { display: inline-block }
 /* wrappers */
 #wrapper {
     margin: 50px auto 0px auto;
-    width:550px;
+    display: flex;
+    justify-content: center;
 }
-#posts { margin-left:140px; }
+#posts { margin-left: 70px; }
 .section {
     background-color: var(--{select:Color Scheme}-post);
     color: var(--{select:Color Scheme}-text);
@@ -1207,14 +1205,15 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 /* MEDIA QUERIES */
 @media screen and (max-width: 1300px) {
     #sidebar {
-        margin-left: -210px;
+        margin-left: -20px;
     }
-    
-    #posts { margin-left: 200px; }
 }
 @media screen and (max-width: 1100px) {
     .pagination.mobile-show { display: flex; margin: auto; }
     .pagination.mobile-hide { display: none }
+    #wrapper {
+        display: block;
+    }
     #code {
         position: static;
         display: block;
@@ -1244,10 +1243,8 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 
 @media screen and (min-width: 1800px) {
     #sidebar {
-        margin-left: -320px;
+        margin-left: -280px;
     }
-    
-    #posts { margin-left: 100px; }
 }
 
 /* AUDIO PLAYER CSS - for javascript */
@@ -1556,9 +1553,6 @@ iframe.tumblr_audio_player.loaded {
  
 </article> <!-- end post -->
 {/block:Posts}
-
-<div class="clear"></div>
-
 
 {block:Pagination}
 <nav class="pagination mobile-show" role="navigation" aria-label="Pagination Navigation">
