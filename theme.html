@@ -45,6 +45,7 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="if:Search Bar" content="1"/>
 <meta name="if:Sidebar Links Rainbow" content="1" />
 <meta name="if:Rainbow Post Type Icons" content="1" />
+<meta name="if:Dashboard Reblog Icon" content="1" />
 <meta name="if:Override Tumblr Appearance Options" content="0" />
 
 <!-- dropdowns -->
@@ -635,8 +636,8 @@ blockquote {
 /* Pre & Code */
 pre {
     font-family: "Lucida Console", Monaco, monospace;
-    background: rgb(var(--rgb-black));
-    color: var(--cyber-text);
+    background: #111;
+    color: #f1f1f1;
     box-sizing:border-box;
     word-wrap:break-word;
     white-space:pre-wrap;
@@ -650,9 +651,8 @@ pre a, code a { var(--cyber-text) !important; }
 pre a:hover, code a:hover, pre a:focus, code a:focus { text-decoration: underline !important; }
 code {
     font-family: "Lucida Console", Monaco, monospace;
-    background: rgb(var(--rgb-black));
-    color: var(--cyber-text);
-    font-family: "Lucida Console", Monaco, monospace;
+    background: #111;
+    color: #f1f1f1;
     line-height:180%;
     display: block;
     padding:5px 10px;
@@ -1094,22 +1094,26 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     font-size: 13px;
     line-height: 13px;
 }
-.sub-icon-reblog::after {
-    font-family:'Font Awesome 5 Free';
+{block:ifNotDashboardReblogIcon}.sub-icon-reblog::after{/block:ifNotDashboardReblogIcon}
+{block:ifDashboardReblogIcon}.sub-icon-reblog-svg{/block:ifDashboardReblogIcon} {
+    {block:ifNotDashboardReblogIcon}
     font-weight:bold;
     content: "\f079";
-    color: var(--green);
-    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+    color: var(--{select:Color Scheme}-green);
+    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;{/block:ifNotDashboardReblogIcon}
+    font-family:'Font Awesome 5 Free';
     position:absolute;
     right:-2px;
     bottom:-2px;
-    height:12px;width:13px;
+    height:12px;
+    width:13px;
     font-size: 13px;
-    background-size:cover;
     line-height: 13px;
 }
 /*remove reblog icon from op*/
-.op-caption .sub-icon-reblog::after {display:none;}
+{block:ifNotDashboardReblogIcon}.op-caption .sub-icon-reblog::after{/block:ifNotDashboardReblogIcon}
+{block:ifDashboardReblogIcon}.op-caption .sub-icon-reblog-svg{/block:ifDashboardReblogIcon}
+{display:none;}
 /*style deactivated users*/
 .deactivated { color: var(--link-color); }
 .deactivated:after {
@@ -1417,7 +1421,7 @@ iframe.tumblr_audio_player.loaded {
 {block:Reblogs}
 <section class="reblogged{block:isOriginalEntry} op-caption{/block:isOriginalEntry}{block:Text} txt{/block:Text}{block:Chat} hide{/block:Chat}{block:Quote} hide{/block:Quote}">
 <p class="user">
-    {block:HasPermalink}<a href="{Permalink}" class="inline-avatar-link">{/block:HasPermalink}{block:HasAvatar}<span class="sub-icon-reblog"><img class="inline-avatar" src="{PortraitURL-64}" aria-label="user avatar"></span>{/block:HasAvatar}{block:HasPermalink}</a><a href="{Permalink}" aria-label="{username}'s Blog">{/block:HasPermalink}<span class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}">{Username}</span>{block:HasPermalink}</a>{/block:HasPermalink}
+    {block:HasPermalink}<a href="{Permalink}" class="inline-avatar-link">{/block:HasPermalink}{block:HasAvatar}<span class="sub-icon-reblog"><img class="inline-avatar" src="{PortraitURL-64}" aria-label="user avatar">{block:ifDashboardReblogIcon}<svg viewBox="0 0 16 16" width="14" height="14" fill="var(--{select:color scheme}-green)" class="sub-icon-reblog-svg"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path><path fill="#ffffff" d="M10.5 7.05c-.344.227-.5 0-.5-.23V5.75H5.593A.594.594 0 0 0 5 6.343v1.324a.625.625 0 0 1-1.25 0V6.343c0-1.016.827-1.843 1.843-1.843H10V3.32c0-.27.315-.398.5-.27s2 2 2 2l-2 2zM6 10.542h4.406A.594.594 0 0 0 11 9.949V8.625a.625.625 0 0 1 1.25 0V9.95a1.845 1.845 0 0 1-1.844 1.843H6v1.032s-.057.498-.5.208l-2-1.978 2-2c.173-.138.5 0 .5.286v1.202z"></path></svg>{/block:ifDashboardReblogIcon}</span>{/block:HasAvatar}{block:HasPermalink}</a><a href="{Permalink}" aria-label="{username}'s Blog">{/block:HasPermalink}<span class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}">{Username}</span>{block:HasPermalink}</a>{/block:HasPermalink}
 </p>
   <div>
     {Body}
@@ -1559,7 +1563,7 @@ iframe.tumblr_audio_player.loaded {
 <div id="mbg"></div>
 
 <!--credit-->
-<footer id="code"><span class="fas fa-code" data-tippy-content='<i>FAMILIAR FACADE</i><br>A theme by SNARL.<br><a href="/" target="_blank">theme garden themes</a>.<br><a href="/" target="_blank">other themes</a>.'></span></footer>
+<footer id="code"><span class="fas fa-code" data-tippy-content='<i>Spectrum.</i><br>A theme by SNARL.<br><a href="/" target="_blank">theme garden themes</a>.<br><a href="/" target="_blank">other themes</a>.'></span></footer>
  
 
 <!--- JAVASCRIPT
