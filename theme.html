@@ -22,6 +22,7 @@ Select a beta dashboard color scheme or set custom colors.
 <!-- custom images -->
 <meta name="image:Background" content="" />
 <meta name="image:Custom Header" content="" />
+<meta name="image:Custom Avatar" content="" />
     
 <!-- custom scheme colors -->
 <meta name="color:Background" content="#39353e">
@@ -47,6 +48,8 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="if:Rainbow Post Type Icons" content="1" />
 <meta name="if:Dashboard Reblog Icon" content="1" />
 <meta name="if:Override Tumblr Appearance Settings" content="0" />
+<meta name="if:Custom Header" content="0" />
+<meta name="if:Custom Avatar" content="0" />
 
 <!-- dropdowns -->
 <meta name="select:Color Scheme" content="mobile" title="Tumblr Appearance">
@@ -57,9 +60,6 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="select:Color Scheme" content="cyber" title="Cybernetic">
 <meta name="select:Color Scheme" content="canary" title="Canary">
 <meta name="select:Color Scheme" content="custom" title="Custom">
-
-<meta name="select:Custom Header" content="mobile" title="No">
-<meta name="select:Custom Header" content="custom" title="Yes">
 
 <meta name="select:Override Show Header" content="show" title="Show">
 <meta name="select:Override Show Header" content="hide" title="Hide">
@@ -276,6 +276,8 @@ Change the version number to whatever version you want if it updates.-->
     --avatar-shape: {AvatarShape};
     --mobile-header: url('{HeaderImage}');
     --custom-header: url('{image:Custom Header}');
+    --avatar: url('{PortraitURL-128}');
+    --avatar-custom: url('{image:Custom Avatar}');
     --background: url('{image:background}');
 
     --font-family: 
@@ -757,7 +759,12 @@ p code { display: inline-block }
 #header {
     width: 100%;
     height:200px;
-    background: var(--{select:Color Scheme}-post) var(--{select:Custom Header}-header) no-repeat center;
+    {block:ifNotCustomHeader}
+    background: var(--{select:Color Scheme}-post) var(--mobile-header) no-repeat center;
+    {/block:ifNotCustomHeader}
+    {block:ifCustomHeader}
+    background: var(--{select:Color Scheme}-post) var(--custom-header) no-repeat center;
+    {/block:ifCustomHeader}
     background-size: cover;
     transition: none;
     display: block;
@@ -777,6 +784,17 @@ p code { display: inline-block }
     overflow:hidden;
     animation-duration: .3s;
     animation-name: fadeAndScale;
+}
+#icon #ico {
+    width: 105px;
+    height: 105px;
+    {block:ifNotCustomAvatar}
+    background: var(--{select:Color Scheme}-post) var(--avatar) no-repeat center;
+    {/block:ifNotCustomAvatar}
+    {block:ifCustomAvatar}
+    background: var(--{select:Color Scheme}-post) var(--avatar-custom) no-repeat center;
+    {/block:ifCustomAvatar}
+    background-size:cover;
 }
 #icon img { width: 105px; height: 105px; }
 #icon + #title { margin-top: 0; }
@@ -1457,7 +1475,7 @@ iframe.tumblr_audio_player.loaded {
     
         {block:ShowHeaderImage}<a id="header" href="/" aria-label="Header Image Link. Returns you to the main page."></a>{/block:ShowHeaderImage}
         
-        {block:ShowAvatar}<a href="/" title="{Title}" id="icon" class="{AvatarShape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="{AvatarShape}"></a>{/block:ShowAvatar}
+        {block:ShowAvatar}<a href="/" title="{Title}" id="icon" class="{AvatarShape}"><div id="ico" alt="{Name}'s icon" class="{AvatarShape}"></div></a>{/block:ShowAvatar}
         
             <div id="bloginfo">
             {block:ShowTitle}<div id="title">{Title}</div>{/block:ShowTitle}
@@ -1470,7 +1488,7 @@ iframe.tumblr_audio_player.loaded {
     
             <a id="header" class="override-{select:Override Show Header}" href="/"></a>
                 
-            <a href="/" title="{Title}" id="icon" class="override override-{select:Override Show Avatar} {select:Override Avatar Shape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="override {select:Override Avatar Shape}"></a>
+            <a href="/" title="{Title}" id="icon" class="override override-{select:Override Show Avatar} {select:Override Avatar Shape}"><div id="ico" alt="{Name}'s icon" class="{AvatarShape}"></div></a>
             <div id="bloginfo">
                 <div id="title" class="override">{Title}</div>
                 <div id="description" class="override">{Description}</div>
