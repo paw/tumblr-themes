@@ -26,7 +26,7 @@ Select a beta dashboard color scheme or set custom colors.
     
 <!-- custom scheme colors -->
 <meta name="color:Background" content="#39353e">
-<meta name="color:Custom Posts" content="#faede2" />
+<meta name="color:Custom Posts" content="#fffbf6" />
 <meta name="color:Custom Text" content="#000000" />
 <meta name="color:Custom Link" content="#c6597d" />
 <meta name="color:Custom Link Hover" content="#444397" />
@@ -878,7 +878,7 @@ p code { display: inline-block }
 #search-input {
     font-family: var(--font-family);
     background:none;
-    color: inherit;
+    color: var(--{select:Color Scheme}-post);
     border:0;
     padding:5px;
     transition:0.3s;
@@ -890,27 +890,8 @@ p code { display: inline-block }
     border-color: var(--{select:Color Scheme}-25);
     max-width:100%;
 }
-#search:hover #search-button, #search:focus-within #search-button, #search-form:hover #search-button, #search-form:focus #search-button {
-    /*margin-left: 5px;*/
-    opacity: 1;
-}
-#search-button {
-    font-family:'Font Awesome 5 Free';
-	font-size: 20px;
-    font-weight:900;
-    border:0px;background:none;
-    color: var(--{select:Color Scheme}-accent);
-    background: var(--{select:Color Scheme}-post);
-    padding: 5px;
-    border-radius: 3px;
-    margin: 0 0 0 5px;
-    transition: 0.3s;
-    /*margin-left: -12px;*/
-    width: 35px;
-    opacity: 0.5;
-}
-#search-button:hover, #search-button:focus {
-    color:var(--{select:Color Scheme}-accent-2);
+#search-form:hover #search-input, #search-form:focus #search-input, #search:focus-within #search-input  {
+    color: var(--{select:Color Scheme}-audio-text);
 }
 {/block:ifSearchBar}
 
@@ -1595,7 +1576,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 {/block:TagPage}
 
 {block:Posts inlineMediaWidth="500"}
-<article class="post" id="post-{PostID}">
+<article class="post" id="post-{PostID}" data-post-id="{PostID}" arial-label="Tumblr Post">
 
 {block:Text}
 {block:Title}<h1 class="post-title wrapper">{Title}</h1>{/block:Title}
