@@ -950,7 +950,54 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
 .ask-portrait img { width: 40px; height:40px; border-radius: 3px; max-width: none; }
 
 /*link post*/
-.link-post { min-height:100px; }
+.link-post {
+    display: flex;
+    flex-wrap: wrap;
+    min-height:100px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    width:100%;
+    border: 1px solid var(--{select:Color Scheme}-25);
+    align-items:center;
+}
+.link-post .thumb-wrapper {
+    position:relative;
+    overflow:hidden;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+.link-post .post-title {
+    display: flex;
+    align-items:center;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+.link-post:hover .post-title, .link-post:focus .post-title {
+    text-decoration: underline;
+}
+.link-post .thumbnail {
+    object-fit: cover;
+}
+.thumbnail + .post-title {
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height:100%;
+    justify-content: center;
+    color: #fff;
+    transition: 0.3s;
+    background: rgba(var(--rgb-black), 0.5);
+}
+.link-post .excerpt {
+    background: var(--{select:Color Scheme}-7);
+    border-top: 1px solid var(--{select:Color Scheme}-25);
+    padding: 10px;
+    width: 100%;
+}
 
 /* post permalink */
 .permalink { font-size: var(--font-accent-size); }
@@ -1424,7 +1471,7 @@ iframe.tumblr_audio_player.loaded {
     
             <a id="header" class="override-{select:Override Show Header}" href="/"></a>
                 
-            <a href="/" title="@{name}" id="icon" class="override override-{select:Override Show Avatar} {select:Override Avatar Shape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="override {select:Override Avatar Shape}"></a>
+            <a href="/" title="{Title}" id="icon" class="override override-{select:Override Show Avatar} {select:Override Avatar Shape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="override {select:Override Avatar Shape}"></a>
             <div id="bloginfo">
                 <div id="title" class="override">{Title}</div>
                 <div id="description" class="override">{Description}</div>
@@ -1512,16 +1559,14 @@ iframe.tumblr_audio_player.loaded {
 {block:Quote}
 <div class="quote"><h1><span class="fas fa-quote-left" style="vertical-align: top"></span> {Quote} <span class="fas fa-quote-right" style="font-size:60%; vertical-align: top"></span></h1><div class="quote-src right" style="padding-bottom: 10px">— {Source}</div></div>
 {/block:Quote}
- 
-<!--{block:Link}
-<a href="{URL}"><h1 class="post-title">{Name} <big><i class="fas fa-external-link-alt"></i></big></h1></a>
-{/block:Link}-->
 
 {block:Link}
 <!-- link -->
-<a href="{URL}" class="link-post wrapper">{block:Thumbnail}
-<img class="photo image-post" src="{Thumbnail}" srcset="{Thumbnail-HighRes} 1000w" sizes="100w" alt="{PhotoAlt}"/>{/block:Thumbnail}
-<h1 class="post-title">{Name} <big><span class="fas fa-external-link-alt"></span></big></h1></a>
+<a href="{URL}" class="link-post wrapper"><span class="thumb-wrapper">{block:Thumbnail}
+<img class="thumbnail" src="{Thumbnail}" srcset="{Thumbnail-HighRes} 1000w" sizes="100w" alt="{PhotoAlt}"/>{/block:Thumbnail}
+<h1 class="post-title"><span>{Name} <big><span class="fas fa-external-link-alt"></span></big></span></h1></span>
+{block:Excerpt}<span class="excerpt">{Excerpt}</span>{/block:Excerpt}
+</a>
 {/block:Link}
  
 {block:Photo}
@@ -1666,7 +1711,7 @@ iframe.tumblr_audio_player.loaded {
 {block:NoteCount} <a href="{Permalink}#notes" class="middle">{NoteCountWithLabel}</a>{/block:NoteCount}
 
 <div class="controls">
-<div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Informational Links Relating to this post."></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post." target="_blank">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}" target="_blank">{lang:Source}</a></li>{/block:ContentSource}<li class="open-in-app hide"><a href="#" class="share-item open-in-app" data-post="{PostID}">{lang:Open in app}</a></li><li><a href="{EmbedUrl}" class="share-item permalink" target="_blank">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
+<div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Informational Links Relating to this post."></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post." target="_blank">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}" target="_blank">{lang:Source}</a></li>{/block:ContentSource}<li><a href="{EmbedUrl}" class="share-item permalink" target="_blank">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
 
 <a href="{ReblogURL}" target="_blank" class="details"><span class="fas fa-retweet middle"></span></a>
 
