@@ -10,13 +10,14 @@ Select a beta dashboard color scheme or set custom colors.
 
 --->
 
-<title>{Title}</title>
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:TagPage} (Posts tagged #{Tag}){/block:TagPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
 {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 <link rel="apple-touch-ico" href="{PortraitURL-128}">
 <link rel="shortcut icon" href="{PortraitURL-128}" />
 <link rel="alternate" type="application/rss+xml" href="{RSS}" />
 
+{block:Hidden}
 {block:Options}
 <!-- custom images -->
 <meta name="image:Background" content="" />
@@ -248,6 +249,7 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="text:Link 7 Custom Icon" content="fas fa-moon" />
 
 {/block:Options}
+{/block:Hidden}
 <!--
 Font Awesome Free 5.13.0
 https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt
@@ -630,6 +632,17 @@ h3 { font-size: 1.17em; }
 h4 { font-size: 1.00em; }
 h5 { font-size: 0.83em; }
 h6 { font-size: 0.67em; }
+.search-results {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.search-results .wrapper {
+    padding-left: 10px;
+}
+.search-results .search_query, .search-results .tag { color: var(--{select:Color Scheme}-accent); }
+.search-results .search_query::before, .search-results .search_query::after { content: '"';}
+.search-results .tag::before { content:'#'; }
 
 /* Blockquotes */
 blockquote {
@@ -883,10 +896,6 @@ p code { display: inline-block }
     justify-content: center;
 }
 #posts { margin-left: 70px; }
-.section {
-    background-color: var(--{select:Color Scheme}-post);
-    color: var(--{select:Color Scheme}-text);
-}
 
 /*posts*/
 .post {
@@ -896,6 +905,9 @@ p code { display: inline-block }
     position:relative;
     border-radius: 3px;
     word-wrap: break-word;
+    word-break: break-word;
+    background-color: var(--{select:Color Scheme}-post);
+    color: var(--{select:Color Scheme}-text);
 }
 .post img {max-width:100%;}
 
@@ -976,8 +988,8 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
 }
 .post-menu span { cursor: pointer; transition: 0.3s; }
 .menu-content {
-    color: var(--{select:Color Scheme}-text);
-    background-color: var(--{select:Color Scheme}-bg);
+    color: var(--{select:Color Scheme}-audio-text);
+    background-color: var(--{select:Color Scheme}-audio-progress);
     box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
     max-width: 0px;
     overflow: hidden;
@@ -998,17 +1010,17 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
     text-align:center;
 }
 .menu-content li {
-    border-bottom: 1px solid var(--{select:Color Scheme}-13);
+    border-bottom: 1px solid var(--{select:Color Scheme}-40);
     padding: 5px 10px;
     white-space: nowrap;
     min-width:125px;
 }
 .menu-content li a {
-    color: var(--{select:Color Scheme}-accent) !important;
+    color: var(--{select:Color Scheme}-audio-text) !important;
     display:block;
 }
 .menu-content li a:hover {
-    color: var(--{select:Color Scheme}-accent) !important;
+    opacity: 0.6;
 }
 .fa-ellipsis-h {text-decoration:none !important;}
 .menu-content ul li:last-child {
@@ -1476,8 +1488,22 @@ iframe.tumblr_audio_player.loaded {
 
 <main id="posts"> <!-- begin main content -->
 
+{block:SearchPage}
+<!-- search info -->
+<header class="post search-header">
+    <h2 class="search-results"><span class="fas fa-search" aria-hidden="true"></span><span class="wrapper">{block:SearchResults}{lang:Search results for SearchQuery 2}{/block:SearchResults}{block:NoSearchResults}{lang:Sorry no results for SearchQuery 2}{/block:NoSearchResults}</span></h2>
+</header>
+{/block:SearchPage}
+
+{block:TagPage}
+<!-- tagged posts info -->
+<header class="post tag-header">
+    <h3 class="search-results"><span class="fas fa-tags" aria-hidden="true"></span><span class="wrapper">{lang:Showing posts tagged Tag 2}</span></h3>
+</header>
+{/block:TagPage}
+
 {block:Posts inlineMediaWidth="500"}
-<article class="post section" id="post-{PostID}">
+<article class="post" id="post-{PostID}">
 
 {block:Text}
 {block:Title}<h1 class="post-title wrapper">{Title}</h1>{/block:Title}
@@ -1640,7 +1666,7 @@ iframe.tumblr_audio_player.loaded {
 {block:NoteCount} <a href="{Permalink}#notes" class="middle">{NoteCountWithLabel}</a>{/block:NoteCount}
 
 <div class="controls">
-<div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Informational Links Relating to this post."></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post.">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}">{lang:Source}</a></li>{/block:ContentSource}<li class="open-in-app hide"><a href="#" class="share-item open-in-app" data-post="{PostID}">{lang:Open in app}</a></li><li><a href="{EmbedUrl}" class="share-item permalink">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
+<div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Informational Links Relating to this post."></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post." target="_blank">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}" target="_blank">{lang:Source}</a></li>{/block:ContentSource}<li class="open-in-app hide"><a href="#" class="share-item open-in-app" data-post="{PostID}">{lang:Open in app}</a></li><li><a href="{EmbedUrl}" class="share-item permalink" target="_blank">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
 
 <a href="{ReblogURL}" target="_blank" class="details"><span class="fas fa-retweet middle"></span></a>
 
@@ -1673,7 +1699,7 @@ iframe.tumblr_audio_player.loaded {
 </footer>
  
    {block:PostNotes}
-<section class="notes section">
+<section class="notes">
         <div class="notecontainer">{PostNotes}</div>
 </section>
     {/block:PostNotes}
