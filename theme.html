@@ -1,16 +1,15 @@
 <html>
 <head>
-
 <!---
 
-SPECTRUM THEME
+SPECTRUM THEME by @snarlier
 
 To see the FA icons you can use, go here: https://fontawesome.com/icons?d=gallery&m=free
 Select a beta dashboard color scheme or set custom colors.
 
 --->
 
-<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:TagPage} (Posts tagged #{Tag}){/block:TagPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+<title>{Title}{block:SearchPage} — {lang:Search results for SearchQuery}{/block:SearchPage}{block:TagPage} — Posts tagged #{Tag}{/block:TagPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
 {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 <link rel="apple-touch-ico" href="{PortraitURL-128}">
@@ -256,12 +255,11 @@ https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt
 Change the version number to whatever version you want if it updates.-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
 
- </head>
+</head>
 
-<style type="text/css" id="block-theme">
-
+<style type="text/css" id="spectrum">
+	
 :root {
-
     --rgb-white: 255, 255, 255;
     --rgb-black: 0, 0, 0;
     --red: #ff492f;
@@ -634,6 +632,8 @@ h3 { font-size: 1.17em; }
 h4 { font-size: 1.00em; }
 h5 { font-size: 0.83em; }
 h6 { font-size: 0.67em; }
+	
+/*tag & search pages*/
 .search-results {
     margin: 0;
     display: flex;
@@ -681,7 +681,7 @@ code {
 	border: 1px solid var(--{select:Color Scheme}-25);
 	border-radius: 3px;
 }
-pre code {padding:0px;display:block;}
+pre code { padding: 0px; display: block; }
 p code { display: inline-block }
 
 /* Tumblr Attribution */
@@ -698,7 +698,7 @@ p code { display: inline-block }
     font-weight: bold; margin-right: 6px;
     font-style: normal;
 }
-
+	
 /* Tippy.js Tooltip Theme*/
 .tippy-tooltip.dash-theme {
     background-color: var(--{select:Color Scheme}-audio-progress);
@@ -826,7 +826,6 @@ p code { display: inline-block }
 }
 #links a:last-child { border-right: 0px; }
 #links a:first-child { border-left: 0px; }
-
 #links a span {transition: 0.1s margin}
 #links a:hover span {margin-bottom: 5px}
 
@@ -917,14 +916,14 @@ p code { display: inline-block }
     background-color: var(--{select:Color Scheme}-post);
     color: var(--{select:Color Scheme}-text);
 }
-.post img {max-width:100%;}
+.post img { max-width: 100%; }
 
 /*text posts*/
-.post-title {margin-top:0;display:block;text-shadow: 2px 1px 1px var(--{select:Color Scheme}-40);}
+.post-title { margin-top: 0; display: block; text-shadow: 2px 1px 1px var(--{select:Color Scheme}-40); }
 
 /*quote posts*/
 .quote-src { font-style: italic; }
-.quote .fa-quote-left { color: var(--{select:Color Scheme}-accent);}
+.quote .fa-quote-left { color: var(--{select:Color Scheme}-accent); }
 .quote h1 { margin: 5px 0; }
 
 /*chat posts*/
@@ -955,7 +954,7 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
     border-bottom:8px solid transparent;
     border-left:8px solid var(--{select:Color Scheme}-7);
 }
-.asker {margin: 0px auto 10px; }
+.asker { margin: 0px auto 10px; }
 .ask-portrait { margin-left: 18px; }
 .ask-portrait img { width: 40px; height:40px; border-radius: 3px; max-width: none; }
 
@@ -963,13 +962,13 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
 .link-post {
     display: flex;
     flex-wrap: wrap;
-    min-height:100px;
+    min-height: 100px;
     border-radius: 3px;
     overflow: hidden;
     position: relative;
-    width:100%;
+    width: 100%;
     border: 1px solid var(--{select:Color Scheme}-25);
-    align-items:center;
+    align-items: center;
 }
 .link-post .thumb-wrapper {
     position:relative;
@@ -1018,13 +1017,12 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
     background: var(--{select:Color Scheme}-7);
 }
 
-/* post permalink */
+/* POST FOOTER */
 .permalink { font-size: var(--font-accent-size); }
 .permalink .post-info {
     display: flex;
     justify-content: space-between;
-    margin: 15px 0 0 0;
-    
+    margin: 15px 0 0 0; 
 }
 .post-controls.left { min-width: 40%;}
 .permalink .post-info .fas { font-size: 20px; }
@@ -1226,7 +1224,7 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 /*remove reblog icon from op*/
 {block:ifNotDashboardReblogIcon}.op-caption .sub-icon-reblog::after{/block:ifNotDashboardReblogIcon}
 {block:ifDashboardReblogIcon}.op-caption .sub-icon-reblog-svg{/block:ifDashboardReblogIcon}
-{display:none;}
+{ display:none; }
 /*style deactivated users*/
 .deactivated { color: var(--{select:Color Scheme}-accent); }
 .deactivated:after {
@@ -1279,7 +1277,7 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     line-height: 100%;
     border-radius: 3px;
 }
-/* fix for edge bug. space-evenly on every browser but edge. */
+/* fix for edge bug. use space-evenly in pagination on every browser except edge. */
 @supports not (-ms-ime-align: auto) {
     .pagination, #links {
         justify-content: space-evenly;
@@ -1291,16 +1289,16 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 #posts .pagination { width: 540px; max-width: 100%; }
 .pagination .current_page { color: var(--{select:Color Scheme}-accent-2) }
 
-/* AUDIO PLAYER CSS - for javascript */
+/* AUDIO PLAYER CSS - for matching javascript */
 iframe.tumblr_audio_player {
     opacity: 0;
     transition: 0.3s opacity;
-    pointer-events:none;
+    pointer-events: none;
     border: 1px solid var(--{select:Color Scheme}-7);
 }
 iframe.tumblr_audio_player.loaded {
     opacity: 1;
-    pointer-events:auto;
+    pointer-events: auto;
 }
 
 /*accessibility skip links*/
@@ -1311,7 +1309,6 @@ iframe.tumblr_audio_player.loaded {
 	margin-left: -510px;
     z-index:99999999999999;
 }
-
 #accessibility-skip-wrap-top {
     position:fixed;
     top:0px;
@@ -1359,25 +1356,24 @@ iframe.tumblr_audio_player.loaded {
     bottom:115px;
     opacity:1;
 }
-/*end accessibility*/
 
-/* GENERAL STYLES */
+/* GENERAL STUFF */
 hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 .right { text-align: right; }
 .float-left { float:left; }
-.float-right { float: right;}
+.float-right { float: right; }
 .clear { clear: both; }
 .middle { vertical-align: middle; }
 .inline-block { display: inline-block; }
-.hide, .tmblr-iframe--app-cta-button { display: none; }
+.hide { display: none; }
 .video.wrapper > * { max-width:100% !important; }
 .center { text-align: center; }
-.read_more_container {margin: 10px auto;font-weight: bold;font-style: italic;}
+.read_more_container { margin: 10px auto; font-weight: bold; font-style: italic; }
 .read_more:after {content:'...';}
 .circle { border-radius: 100%; }
 .square { border-radius: 3px; }
 .custom-icon { display: none; }
-.hide + .custom-icon { display: inline-block;}
+.hide + .custom-icon { display: inline-block; }
 .mobile-show { display: none }
 
 /* MEDIA QUERIES */
@@ -1439,7 +1435,6 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
         font-size: var(--font-size);
     }
 }
-
 </style>
 
 <style id="custom-css">
@@ -1470,41 +1465,35 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 <aside id="sidebar">
 <section id="info">
 
-    {block:ifSearchBar}
-<!--search-->
-<section id="search" role="search">
-        <form action="/search" method="get" id="search-form">
-        <div id="search-wrap"><span class="fas fa-search" aria-hidden="true"></span>
-            <input type="text" name="q" value="{SearchQuery}" aria-label="Search Query" id="search-input" placeholder="{lang:Search}...">
-            </div>
-        </form>
-</section>{/block:ifSearchBar}
+	{block:ifSearchBar}
+	<!--search-->
+	<section id="search" role="search">
+			<form action="/search" method="get" id="search-form">
+			<div id="search-wrap"><span class="fas fa-search" aria-hidden="true"></span>
+				<input type="text" name="q" value="{SearchQuery}" aria-label="Search Query" id="search-input" placeholder="{lang:Search}...">
+				</div>
+			</form>
+	</section>
+	{/block:ifSearchBar}
 
     {block:ifNotOverrideTumblrAppearanceSettings}
-    
         {block:ShowHeaderImage}<a id="header" href="/" aria-label="Header Image Link. Returns you to the main page."></a>{/block:ShowHeaderImage}
-        
         {block:ShowAvatar}<a href="/" title="{Title}" id="icon" class="{AvatarShape}"><div id="ico" alt="{Name}'s icon" class="{AvatarShape}"></div></a>{/block:ShowAvatar}
-        
-            <div id="bloginfo">
+        <div id="bloginfo">
             {block:ShowTitle}<div id="title">{Title}</div>{/block:ShowTitle}
             {block:ShowDescription}<div id="description">{Description}</div>{/block:ShowDescription}
-            </div>
-            
+        </div>
     {/block:ifNotOverrideTumblrAppearanceSettings}
-    
+	
     {block:ifOverrideTumblrAppearanceSettings}
-    
-            <a id="header" class="override-{select:Override Show Header}" href="/"></a>
-                
-            <a href="/" title="{Title}" id="icon" class="override override-{select:Override Show Avatar} {select:Override Avatar Shape}"><div id="ico" alt="{Name}'s icon" class="{select:Override Avatar Shape}"></div></a>
-            <div id="bloginfo">
-                <div id="title" class="override">{Title}</div>
-                <div id="description" class="override">{Description}</div>
-            </div>
-            
+		<a id="header" class="override-{select:Override Show Header}" href="/"></a>
+		<a href="/" title="{Title}" id="icon" class="override override-{select:Override Show Avatar} {select:Override Avatar Shape}"><div id="ico" alt="{Name}'s icon" class="{select:Override Avatar Shape}"></div></a>
+		<div id="bloginfo">
+			<div id="title" class="override">{Title}</div>
+			<div id="description" class="override">{Description}</div>
+        </div>
     {/block:ifOverrideTumblrAppearanceSettings}
-
+	
     <nav id="links">
         {block:iflink1url}<a href="{text:link 1 url}" title="{text:link 1 title}" aria-label="{text:link 1 title}"><span class="{select:link 1 icon}"></span><span class="custom-icon {text:link 1 custom icon}"></span></a>
         {/block:iflink1url}
@@ -1716,10 +1705,8 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 {/block:NotReblog}
 </section>
 
-<!-- permalink -->
-
-
 {block:Date}
+<!-- post footer -->
 <footer class="permalink">
 
 <section class="post-info">
@@ -1777,15 +1764,14 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
     {/block:PostNotes}
 {/block:Date}
 
-<!-- don't remove this, it gets rid of annoying text src -->
+<!-- hide text content source -->
 {block:ContentSource}<!-- {SourceURL}
 {block:SourceLogo}<img src="{BlackLogoURL}"width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}
 {block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
 {/block:ContentSource}
  
-</article> <!-- end post -->
+</article>
 {/block:Posts}
-
 
 {block:Pagination}
 <nav id="pagination-mobile" class="pagination mobile-show" role="navigation" aria-label="Pagination Navigation">
@@ -1806,7 +1792,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
       {block:NextPage}
             <a href="{NextPage}" aria-label="{lang:Next page}" title="{lang:Next page}"><span class="fas fa-chevron-right"></span></a>
 {/block:NextPage}
-</nav> <!-- end pagination -->
+</nav>
 {/block:Pagination}
 
 {block:indexpage}
@@ -1827,7 +1813,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 </main> <!-- end post wrapper -->
 </div> <!-- end centering wrapper -->
 
-<!-- bg container, for mobile compatibility -->
+<!-- fixed bg container, for mobile compatibility -->
 <div id="mbg"></div>
 
 <!--credit-->
@@ -1900,7 +1886,6 @@ ready(() => {
     });
 });
 </script>
-
  
 </body>
 </html>
