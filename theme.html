@@ -531,11 +531,11 @@ Change the version number to whatever version you want if it updates.-->
 }
 
 @keyframes fadeAndScale {
-    from {
+    0% {
         opacity: 0;
         transform: scale(0, 0);
     }
-    to {
+    100% {
         opacity: 1;
         transform: scale(1, 1);
     }
@@ -782,7 +782,7 @@ p code { display: inline-block }
     {block:ifSearchBar}margin: 60px auto 0px auto;{/block:ifSearchBar}
     {/block:HideHeaderImage}
     overflow:hidden;
-    animation-duration: .3s;
+    animation-duration: 0.4s;
     animation-name: fadeAndScale;
 }
 #icon #ico {
@@ -933,6 +933,8 @@ p code { display: inline-block }
 
 /*quote posts*/
 .quote-src { font-style: italic; }
+.quote .fa-quote-left { color: var(--{select:Color Scheme}-accent);}
+.quote h1 { margin: 5px 0; }
 
 /*chat posts*/
 ul.chat {
@@ -1707,6 +1709,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
     {block:Answer}
     <div class="ask answer">
       <div class="ask-content">
+      <h3 class="asker"><strong class="middle">{lang:Answer}:</strong></h3>
           {Replies}
       </div>
       <div class="ask-portrait"><img src="{PortraitURL-128}" alt="Answerer Icon" aria-hidden="true"></div>
