@@ -52,13 +52,13 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="if:Custom Avatar" content="0" />
 
 <!-- dropdowns -->
-<meta name="select:Color Scheme" content="mobile" title="Tumblr Appearance">
 <meta name="select:Color Scheme" content="true" title="True Blue">
 <meta name="select:Color Scheme" content="dark" title="Dark Mode">
 <meta name="select:Color Scheme" content="classic" title="Low-Contrast Classic">
 <meta name="select:Color Scheme" content="cement" title="Cement">
 <meta name="select:Color Scheme" content="cyber" title="Cybernetic">
 <meta name="select:Color Scheme" content="canary" title="Canary">
+<meta name="select:Color Scheme" content="mobile" title="Tumblr Appearance">
 <meta name="select:Color Scheme" content="custom" title="Custom">
 
 <meta name="select:Override Show Header" content="show" title="Show">
@@ -929,7 +929,7 @@ p code { display: inline-block }
 .post img {max-width:100%;}
 
 /*text posts*/
-.post-title {margin-top:0;display:block;}
+.post-title {margin-top:0;display:block;text-shadow: 2px 1px 1px var(--{select:Color Scheme}-40);}
 
 /*quote posts*/
 .quote-src { font-style: italic; }
@@ -984,6 +984,7 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
     display: flex;
     align-items:center;
     justify-content:center;
+    width:100%;
 }
 .link-post .post-title {
     display: flex;
@@ -991,12 +992,15 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
     padding: 10px;
     text-align: center;
     margin: 0;
+    text-shadow: none;
+    font-size: 1.75em;
 }
 .link-post:hover .post-title, .link-post:focus .post-title {
     text-decoration: underline;
 }
 .link-post .thumbnail {
     object-fit: cover;
+    flex-grow: 1;
 }
 .thumbnail + .post-title {
     position:absolute;
@@ -1360,6 +1364,7 @@ iframe.tumblr_audio_player.loaded {
 /*end accessibility*/
 
 /* GENERAL STYLES */
+hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 .right { text-align: right; }
 .float-left { float:left; }
 .float-right { float: right;}
@@ -1429,6 +1434,11 @@ iframe.tumblr_audio_player.loaded {
     }
     #accessibility-skip-wrap-top, #accessibility-skip-wrap-bottom {
         margin-left: -550px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .link-post .post-title {
+        font-size: var(--font-size);
     }
 }
 
@@ -1562,7 +1572,7 @@ iframe.tumblr_audio_player.loaded {
 {block:TagPage}
 <!-- tagged posts info -->
 <header class="post tag-header">
-    <h3 class="search-results"><span class="fas fa-tags" aria-hidden="true"></span><span class="wrapper">{lang:Showing posts tagged Tag 2}</span></h3>
+    <h2 class="search-results"><span class="fas fa-tags" aria-hidden="true"></span><span class="wrapper">{lang:Showing posts tagged Tag 2}</span></h2>
 </header>
 {/block:TagPage}
 
