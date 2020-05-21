@@ -4,13 +4,11 @@
 <!---
 
 SPECTRUM THEME
-by @snarlier
 
 To see the FA icons you can use, go here: https://fontawesome.com/icons?d=gallery&m=free
 Select a beta dashboard color scheme or set custom colors.
 
 --->
- 
 
 <title>{Title}</title>
 {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
@@ -65,8 +63,8 @@ Select a beta dashboard color scheme or set custom colors.
 <meta name="select:Override Show Header" content="show" title="Show">
 <meta name="select:Override Show Header" content="hide" title="Hide">
     
-<meta name="select:Override Show Avatar" content="block" title="Show">
-<meta name="select:Override Show Avatar" content="none" title="Hide">
+<meta name="select:Override Show Avatar" content="show" title="Show">
+<meta name="select:Override Show Avatar" content="hide" title="Hide">
 
 <meta name="select:Override Avatar Shape" content="circle" title="Circle">
 <meta name="select:Override Avatar Shape" content="square" title="Square">
@@ -561,16 +559,22 @@ figure #youtube_iframe, #youtube_iframe, .spotify_audio_player { display:block; 
 }
 html { margin: 0; }
 body {
-    color:{color:text};
-    background-color: var(--background);
+    color:var(--{select:Color Scheme}-text);
+    background-color: var(--{select:Color Scheme}-bg);
     font-family: var(--font-family);
     font-size: var(--font-size);
     text-align:left;
     line-height: 1.5em;
     margin: 5px;
     overflow-x: hidden;
+    counter-reset: numpost;
 }
 * { box-sizing:border-box; }
+
+.skip-to-post::before {
+    counter-increment: numpost;
+    content: "Skip to Post #" counter(numpost);
+}
 
 /*mobile background*/
 #mbg {
@@ -590,10 +594,10 @@ body, #mbg {
 
 /*basic body styling, & scrollbar styling for Gecko & Chromium browsers*/
 html, body {
-    scrollbar-color: var(--{select:Color Scheme}-text) var(--{select:Color Scheme}-post);
+    scrollbar-color: var(--{select:Color Scheme}-60) var(--{select:Color Scheme}-post);
 }
 body * {
-    scrollbar-color: var(--{select:Color Scheme}-text) var(--{select:Color Scheme}-25);
+    scrollbar-color: var(--{select:Color Scheme}-60) var(--{select:Color Scheme}-25);
     scrollbar-width: thin;
 }
 ::-webkit-scrollbar {
@@ -602,7 +606,7 @@ body * {
     background: var(--{select:Color Scheme}-post);
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--{select:Color Scheme}-text);
+    background: var(--{select:Color Scheme}-60);
 }
 body *::-webkit-scrollbar {
     width: 10px;
@@ -689,7 +693,7 @@ p code { display: inline-block }
     white-space:pre-line;
     margin:10px auto 5px auto;
     border-radius: 0px;
-    font-size: var(--font-accent-size);
+    font-size: var(--font-size);
     box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
     border-radius: 3px;
 }
@@ -704,8 +708,8 @@ p code { display: inline-block }
 /* SIDEBAR */
 #sidebar {
     position: sticky;
-    width: 400px;
-    margin-left: -110px;
+    width: 370px;
+    margin-left: -200px;
     top: 50px;
     z-index: 2;
     height: 100%;
@@ -718,6 +722,7 @@ p code { display: inline-block }
     border-radius: 3px;
     overflow: hidden;
     margin: 0px 0 20px 0;
+    position: relative;
 }
 /*blog description*/
 #description {
@@ -741,10 +746,9 @@ p code { display: inline-block }
     width: 100%;
     height:200px;
     background: var(--{select:Color Scheme}-post) var(--{select:Custom Header}-header) no-repeat center;
-    {block:ShowHeaderImage}display: block;{/block:ShowHeaderImage}
-    {block:HideHeaderImage}display:none;{/block:HideHeaderImage}
     background-size: cover;
     transition: none;
+    display: block;
 }
 /*avatar*/
 #icon {
@@ -754,7 +758,10 @@ p code { display: inline-block }
     padding: 10px;height: 125px; width: 125px;
     z-index: 2;
     {block:ShowHeaderImage}margin: -100px auto 0px auto;{/block:ShowHeaderImage}
-    {block:HideHeaderImage}margin: 0px auto 0px auto;{/block:HideHeaderImage}
+    {block:HideHeaderImage}
+    {block:ifNotSearchBar}margin: 0px auto 0px auto;{/block:ifNotSearchBar}
+    {block:ifSearchBar}margin: 60px auto 0px auto;{/block:ifSearchBar}
+    {/block:HideHeaderImage}
     overflow:hidden;
     animation-duration: .3s;
     animation-name: fadeAndScale;
@@ -763,13 +770,18 @@ p code { display: inline-block }
 #icon + #title { margin-top: 0; }
 
 /* appearance option overrides */
-#header.override-show { display: block;}
-#header.override-hide { display: none;}
-#icon.override { display: {select:Override Show Avatar}; }
+#header.override-show, #icon.override-show { display: block; }
+#header.override-hide, #icon.override-hide { display: none; }
 #header.override-show + #icon.override { margin: -100px auto 0px auto; }
-#header.override-hide + #icon.override { margin: 0px auto 0px auto;  }
+#header.override-hide + #icon.override {
+    {block:ifNotSearchBar}margin: 0px auto 0px auto;{/block:ifNotSearchBar}
+    {block:ifSearchBar}margin: 60px auto 0px auto;{/block:ifSearchBar}
+}
 #title.override { display: {select:Override Show Title}; }
 #description.override {display: {select:Override Show Description}}
+#search + #header.override-hide + #icon.override-hide + #bloginfo, #search + #bloginfo {
+    margin-top: 60px;
+}
 
 /*sidebar links*/
 #links {
@@ -801,37 +813,46 @@ p code { display: inline-block }
 {block:ifSearchBar}
 /*search bar*/
 #search {
-    width: 100%;
-    padding: 20px 20px;
+    width:100%;
+	justify-content:center;
     display: flex;
     flex-wrap:wrap;
-    justify-content: center;
     align-items: center;
     border-radius: 3px;
+    position:absolute;
+    top: 15px;
+    /*left: 15px;*/
 }
 #search-form {
     width:100%;
     display:flex;
-	justify-content:center;
     text-align:center;
     margin:auto;
 	line-height:15px;
+	justify-content:center;
 }
 #search-input {
     font-family: var(--font-family);
+    font-weight: bold;
     padding:5px;
     background:none;
-    color: var(--{select:Color Scheme}-60);
+    color: var(--{select:Color Scheme}-post);
     font-style:italic;
     transition:0.3s;
     border:1px solid var(--{select:Color Scheme}-13);
-    background: var(--{select:Color Scheme}-7);
+    background: var(--{select:Color Scheme}-25);
     border-radius:3px;
+    /*max-width: 0px;*/
 }
-#search-input:hover, #search-input:focus, #search-form:hover #search-input, #search-form:focus #search-input {
+#search-input:hover, #search-input:focus, #search-form:hover #search-input, #search-form:focus #search-input, #search:focus-within #search-input {
     background: var(--{select:Color Scheme}-audio-progress);
     color: var(--{select:Color Scheme}-audio-text);
     border-color: var(--{select:Color Scheme}-25);
+    max-width:100%;
+}
+#search:hover #search-button, #search:focus-within #search-button, #search-form:hover #search-button, #search-form:focus #search-button {
+    /*margin-left: 5px;*/
+    opacity: 1;
 }
 #search-button {
     font-family:'Font Awesome 5 Free';
@@ -839,6 +860,14 @@ p code { display: inline-block }
     font-weight:900;
     border:0px;background:none;
     color: var(--{select:Color Scheme}-accent);
+    background: var(--{select:Color Scheme}-post);
+    padding: 5px;
+    border-radius: 3px;
+    margin: 0 0 0 5px;
+    transition: 0.3s;
+    /*margin-left: -12px;*/
+    width: 35px;
+    opacity: 0.5;
 }
 #search-button:hover, #search-button:focus {
     color:var(--{select:Color Scheme}-accent-2);
@@ -916,7 +945,7 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
 .permalink .post-info {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0 0 0;
+    margin: 15px 0 0 0;
     
 }
 .post-controls.left { min-width: 40%;}
@@ -1007,7 +1036,7 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 /*custom like button*/
 .custom-like-button {
   position: relative;
-  bottom: -4px; left: -4px;
+  bottom: -3px; left: -4px;
   margin-top:-5px;
   display: inline-block;
   width: 15px;
@@ -1121,20 +1150,20 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 {block:ifDashboardReblogIcon}.op-caption .sub-icon-reblog-svg{/block:ifDashboardReblogIcon}
 {display:none;}
 /*style deactivated users*/
-.deactivated { color: var(--link-color); }
+.deactivated { color: var(--{select:Color Scheme}-accent); }
 .deactivated:after {
     content:'Deactivated';
     text-transform:capitalize;
     font-style:italic;
     font-weight:normal;
     letter-spacing:0px;
-    color:var(--post-title-color);
+    color:var(--{select:Color Scheme}-accent-2);
     opacity:0;
     transition:0.3s;
     word-break:break-word;
     margin-left: 5px;
 }
-.user:hover .deactivated:after, .user:focus .deactivated:after {opacity:0.7;}
+.user:hover .deactivated:after, .user:focus .deactivated:after {opacity: 1;}
 
 /* THEME CREDIT */
 #code {
@@ -1184,6 +1213,76 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
 #posts .pagination { width: 540px; max-width: 100%; }
 .pagination .current_page { color: var(--{select:Color Scheme}-accent-2) }
 
+/* AUDIO PLAYER CSS - for javascript */
+iframe.tumblr_audio_player {
+    opacity: 0;
+    transition: 0.3s opacity;
+    pointer-events:none;
+    border: 1px solid var(--{select:Color Scheme}-7);
+}
+iframe.tumblr_audio_player.loaded {
+    opacity: 1;
+    pointer-events:auto;
+}
+
+/*accessibility skip links*/
+#accessibility-skip-wrap-top, #accessibility-skip-wrap-bottom {
+    height:0px;
+    width:237px;
+	left: calc(50%);
+	margin-left: -510px;
+    z-index:99999999999999;
+}
+
+#accessibility-skip-wrap-top {
+    position:fixed;
+    top:0px;
+}
+#accessibility-skip-wrap-bottom {
+    position:fixed;
+    bottom:-100px;
+    margin-bottom:25px;
+}
+.accessibility-skip {
+    display:flex;
+    position:absolute;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transition:0.3s;
+    width:220px;
+    color:var(--{select:Color Scheme}-text) !important;
+    text-decoration:underline;
+    font-size: 16px;
+    line-height:120%;
+    background:var(--{select:Color Scheme}-post);
+    margin:5px 0px;
+    padding:5px;
+    min-height:40px;
+    box-sizing:border-box;
+    opacity:0;
+    border:1px solid var(--{select:Color Scheme}-13);
+    border-radius:5px;
+}
+.accessibility-skip i {
+    margin:0px 5px 0px 5px;
+}
+#accessibility-skip-wrap-top .accessibility-skip {
+    top:-50px;
+}
+#accessibility-skip-wrap-top .accessibility-skip:focus, #accessibility-skip-wrap-top .accessibility-skip:hover {
+    top: 15px;
+    opacity:1;
+}
+#accessibility-skip-wrap-bottom .accessibility-skip {
+    bottom:0px;
+}
+#accessibility-skip-wrap-bottom .accessibility-skip:focus, #accessibility-skip-wrap-bottom .accessibility-skip:hover {
+    bottom:115px;
+    opacity:1;
+}
+/*end accessibility*/
+
 /* GENERAL STYLES */
 .right { text-align: right; }
 .float-left { float:left; }
@@ -1207,10 +1306,14 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     #sidebar {
         margin-left: -20px;
     }
+    #accessibility-skip-wrap-top, #accessibility-skip-wrap-bottom {
+        margin-left: -430px;
+    }
 }
 @media screen and (max-width: 1100px) {
     .pagination.mobile-show { display: flex; margin: auto; }
-    .pagination.mobile-hide { display: none }
+    .pagination.mobile-hide, .accessibility-skip.mobile-hide { display: none }
+    .accessibility-skip.mobile-show { display: flex; }
     #wrapper {
         display: block;
     }
@@ -1239,26 +1342,20 @@ ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 1
     #header {
         height: 225px;
     }
+    #accessibility-skip-wrap-top, #accessibility-skip-wrap-bottom {
+        margin-left: -110px;
+    }
 }
 
 @media screen and (min-width: 1800px) {
     #sidebar {
         margin-left: -280px;
     }
+    #accessibility-skip-wrap-top, #accessibility-skip-wrap-bottom {
+        margin-left: -550px;
+    }
 }
 
-/* AUDIO PLAYER CSS - for javascript */
-iframe.tumblr_audio_player {
-    opacity: 0;
-    transition: 0.3s opacity;
-    pointer-events:none;
-    border: 1px solid var(--{select:Color Scheme}-7);
-}
-iframe.tumblr_audio_player.loaded {
-    opacity: 1;
-    pointer-events:auto;
-}
- 
 </style>
 
 <style id="custom-css">
@@ -1267,31 +1364,28 @@ iframe.tumblr_audio_player.loaded {
  
 <body>
 
+<aside id="accessibility-skip-wrap-top">
+<a href="#posts" class="accessibility-skip">Skip to Main Content <i class="fas fa-forward"></i></a>
+<a href="#sidebar" class="accessibility-skip">Skip to Blog Information <i class="fas fa-forward"></i></a>
+{block:ifLink1Url}
+<a href="#links" class="accessibility-skip">Skip to Navigation <i class="fas fa-forward"></i></a>
+{/block:ifLink1Url}
+{block:Pagination}
+<a href="#pagination" class="accessibility-skip mobile-hide">Skip to Pagination <i class="fas fa-forward"></i></a><a href="#pagination-mobile" class="accessibility-skip mobile-show">Skip to Pagination <i class="fas fa-forward"></i></a>{/block:Pagination}
+{block:ifSearchBar}
+<a href="#search" class="accessibility-skip">Skip to Search <i class="fas fa-forward"></i></a>
+{/block:ifSearchBar}
+{block:IndexPage}
+{block:Posts}
+<a href="#post-{PostID}" class="accessibility-skip skip-to-post"> <i class="fas fa-forward"></i></a>
+{/block:Posts}
+{/block:IndexPage}
+</aside>
+
 <div id="wrapper">
 <aside id="sidebar">
 <section id="info">
-    {block:ifNotOverrideTumblrAppearanceSettings}
-    
-        <a id="header" href="/" aria-label="Header Image Link. Returns you to the main page."></a>
-        
-        {block:ShowAvatar}<a href="/" title="{Title}" id="icon" class="{AvatarShape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="{AvatarShape}"></a>{/block:ShowAvatar}
-        
-            {block:ShowTitle}<div id="title">{Title}</div>{/block:ShowTitle}
-            {block:ShowDescription}<div id="description">{Description}</div>{/block:ShowDescription}
-            
-    {/block:ifNotOverrideTumblrAppearanceSettings}
-    
-    {block:ifOverrideTumblrAppearanceSettings}
-    
-            <a id="header" class="override-{select:Override Show Header}" href="/"></a>
-                
-            <a href="/" title="@{name}" id="icon" class="override {select:Override Avatar Shape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="override {select:Override Avatar Shape}"></a>
-    
-            <div id="title" class="override">{Title}</div>
-            <div id="description" class="override">{Description}</div>
-            
-    {/block:ifOverrideTumblrAppearanceSettings}
-    
+
     {block:ifSearchBar}
 <!--search-->
 <section id="search" role="search">
@@ -1300,6 +1394,31 @@ iframe.tumblr_audio_player.loaded {
             <input type="submit" value='' title="Search?" id="search-button">
         </form>
 </section>{/block:ifSearchBar}
+
+    {block:ifNotOverrideTumblrAppearanceSettings}
+    
+        {block:ShowHeaderImage}<a id="header" href="/" aria-label="Header Image Link. Returns you to the main page."></a>{/block:ShowHeaderImage}
+        
+        {block:ShowAvatar}<a href="/" title="{Title}" id="icon" class="{AvatarShape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="{AvatarShape}"></a>{/block:ShowAvatar}
+        
+            <div id="bloginfo">
+            {block:ShowTitle}<div id="title">{Title}</div>{/block:ShowTitle}
+            {block:ShowDescription}<div id="description">{Description}</div>{/block:ShowDescription}
+            </div>
+            
+    {/block:ifNotOverrideTumblrAppearanceSettings}
+    
+    {block:ifOverrideTumblrAppearanceSettings}
+    
+            <a id="header" class="override-{select:Override Show Header}" href="/"></a>
+                
+            <a href="/" title="@{name}" id="icon" class="override override-{select:Override Show Avatar} {select:Override Avatar Shape}"><img src="{PortraitURL-128}" alt="{Name}'s icon" class="override {select:Override Avatar Shape}"></a>
+            <div id="bloginfo">
+                <div id="title" class="override">{Title}</div>
+                <div id="description" class="override">{Description}</div>
+            </div>
+            
+    {/block:ifOverrideTumblrAppearanceSettings}
 
     <nav id="links">
         {block:iflink1url}<a href="{text:link 1 url}" title="{text:link 1 title}" aria-label="{text:link 1 title}"><span class="{select:link 1 icon}"></span><span class="custom-icon {text:link 1 custom icon}"></span></a>
@@ -1332,9 +1451,9 @@ iframe.tumblr_audio_player.loaded {
 </section> <!-- end blog info -->
 
 {block:Pagination}
-<nav class="pagination mobile-hide" role="navigation" aria-label="Pagination Navigation">
+<nav id="pagination" class="pagination mobile-hide" role="navigation" aria-label="Pagination Navigation">
       {block:PreviousPage}
-            <a href="{PreviousPage}" aria-label="{lang:Prev page}" title="{lang:Prev page}"><span class="fas fa-chevron-left"></span></a>
+            <a href="{PreviousPage}" aria-label="{lang:Previous page}" title="{lang:Previous page}"><span class="fas fa-chevron-left"></span></a>
       {/block:PreviousPage}
 
       {block:JumpPagination length="5"}
@@ -1358,7 +1477,7 @@ iframe.tumblr_audio_player.loaded {
 <main id="posts"> <!-- begin main content -->
 
 {block:Posts inlineMediaWidth="500"}
-<article class="post section" data-post-id="{PostID}">
+<article class="post section" id="post-{PostID}">
 
 {block:Text}
 {block:Title}<h1 class="post-title wrapper">{Title}</h1>{/block:Title}
@@ -1442,7 +1561,7 @@ iframe.tumblr_audio_player.loaded {
 {block:Reblogs}
 <section class="reblogged{block:isOriginalEntry} op-caption{/block:isOriginalEntry}{block:Text} txt{/block:Text}{block:Chat} hide{/block:Chat}{block:Quote} hide{/block:Quote}">
 <p class="user">
-    {block:HasPermalink}<a href="{Permalink}" class="inline-avatar-link">{/block:HasPermalink}{block:HasAvatar}<span class="sub-icon-reblog"><img class="inline-avatar" src="{PortraitURL-64}" aria-label="user avatar">{block:ifDashboardReblogIcon}<svg viewBox="0 0 16 16" width="14" height="14" fill="var(--{select:color scheme}-green)" class="sub-icon-reblog-svg"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path><path fill="#ffffff" d="M10.5 7.05c-.344.227-.5 0-.5-.23V5.75H5.593A.594.594 0 0 0 5 6.343v1.324a.625.625 0 0 1-1.25 0V6.343c0-1.016.827-1.843 1.843-1.843H10V3.32c0-.27.315-.398.5-.27s2 2 2 2l-2 2zM6 10.542h4.406A.594.594 0 0 0 11 9.949V8.625a.625.625 0 0 1 1.25 0V9.95a1.845 1.845 0 0 1-1.844 1.843H6v1.032s-.057.498-.5.208l-2-1.978 2-2c.173-.138.5 0 .5.286v1.202z"></path></svg>{/block:ifDashboardReblogIcon}</span>{/block:HasAvatar}{block:HasPermalink}</a><a href="{Permalink}" aria-label="{username}'s Blog">{/block:HasPermalink}<span class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}">{Username}</span>{block:HasPermalink}</a>{/block:HasPermalink}
+    {block:HasPermalink}<a href="{Permalink}" class="inline-avatar-link">{/block:HasPermalink}{block:HasAvatar}<span class="sub-icon-reblog"><img class="inline-avatar" src="{PortraitURL-64}" aria-label="user avatar">{block:ifDashboardReblogIcon}<svg viewBox="0 0 16 16" width="14" height="14" fill="#00cf35" class="sub-icon-reblog-svg"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path><path fill="#ffffff" d="M10.5 7.05c-.344.227-.5 0-.5-.23V5.75H5.593A.594.594 0 0 0 5 6.343v1.324a.625.625 0 0 1-1.25 0V6.343c0-1.016.827-1.843 1.843-1.843H10V3.32c0-.27.315-.398.5-.27s2 2 2 2l-2 2zM6 10.542h4.406A.594.594 0 0 0 11 9.949V8.625a.625.625 0 0 1 1.25 0V9.95a1.845 1.845 0 0 1-1.844 1.843H6v1.032s-.057.498-.5.208l-2-1.978 2-2c.173-.138.5 0 .5.286v1.202z"></path></svg>{/block:ifDashboardReblogIcon}</span>{/block:HasAvatar}{block:HasPermalink}</a><a href="{Permalink}" aria-label="{username}'s Blog">{/block:HasPermalink}<span class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}">{Username}</span>{block:HasPermalink}</a>{/block:HasPermalink}
 </p>
   <div>
     {Body}
@@ -1540,6 +1659,15 @@ iframe.tumblr_audio_player.loaded {
 <!-- end info -->
 
 {block:permalinkpage}
+<aside id="accessibility-skip-wrap-bottom">
+<a href="#accessibility-skip-wrap-top" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Top of Page</a>
+<a href="#sidebar" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Blog Information</a>
+{block:ifShowCustomLinks}<a href="#links" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Navigation</a>{/block:ifShowCustomLinks}
+{block:ifSearchBar}
+<a href="#search" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Search</a>
+{/block:ifSearchBar}
+</aside>
+
 <section id="notes" class="datetime center">{lang:Posted on DayOfWeek the DayOfMonthWithSuffix of Month Year at FormattedTime}.<br>{NoteCountWithLabel}.</section>
 {/block:permalinkpage}
 </footer>
@@ -1550,14 +1678,21 @@ iframe.tumblr_audio_player.loaded {
 </section>
     {/block:PostNotes}
 {/block:Date}
+
+<!-- don't remove this, it gets rid of annoying text src -->
+{block:ContentSource}<!-- {SourceURL}
+{block:SourceLogo}<img src="{BlackLogoURL}"width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}
+{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
+{/block:ContentSource}
  
 </article> <!-- end post -->
 {/block:Posts}
 
+
 {block:Pagination}
-<nav class="pagination mobile-show" role="navigation" aria-label="Pagination Navigation">
+<nav id="pagination-mobile" class="pagination mobile-show" role="navigation" aria-label="Pagination Navigation">
       {block:PreviousPage}
-            <a href="{PreviousPage}" aria-label="{lang:Prev page}" title="{lang:Prev page}"><span class="fas fa-chevron-left"></span></a>
+            <a href="{PreviousPage}" aria-label="{lang:Previous page}" title="{lang:Previous page}"><span class="fas fa-chevron-left"></span></a>
       {/block:PreviousPage}
 
       {block:JumpPagination length="5"}
@@ -1575,6 +1710,21 @@ iframe.tumblr_audio_player.loaded {
 {/block:NextPage}
 </nav> <!-- end pagination -->
 {/block:Pagination}
+
+{block:indexpage}
+<aside id="accessibility-skip-wrap-bottom">
+<a href="#accessibility-skip-wrap-top" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Top of Page</a>
+<a href="#sidebar" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Blog Information</a>
+{block:ifLink1Url}<a href="#links" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Navigation</a>{/block:ifLink1Url}
+{block:Pagination}
+<a href="#pagination" class="accessibility-skip mobile-hide"><i class="fas fa-backward"></i> Back to Pagination</a>
+<a href="#pagination-mobile" class="accessibility-skip mobile-show"><i class="fas fa-backward"></i> Back to Pagination</a>{/block:Pagination}
+{block:ifSearchBar}
+<a href="#search" class="accessibility-skip"><i class="fas fa-backward"></i> Back to Search</a>
+{/block:ifSearchBar}
+</aside>
+</aside>
+{/block:indexpage}
 
 </main> <!-- end post wrapper -->
 </div> <!-- end centering wrapper -->
