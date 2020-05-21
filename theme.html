@@ -1852,7 +1852,13 @@ ready(() => {
             //when audio player loads, inject style inside
             var inside = iframeRef(ele);
             var style = inside.createElement("style");
-            style.innerHTML = ':root { --audio-player-bg: ' + bg + '; --audio-player-progress:' + progress + '; --audio-player-one: ' + text + '; --audio-player-two: ' + text + '; } @font-face { font-family: Favorit; src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-85-8ff1c986.woff2) format("woff2"); font-style: normal; font-weight: 400; font-display: swap;} @font-face { font-family: Favorit;src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-medium-be005cc5.woff2) format("woff2");font-style: normal; font-weight: 700;font-display: swap;} .audio-player{background:var(--audio-player-bg) !important;font-family: "Favorit" !important;max-width:100% !important;margin-left:0px !important;} .native-audio-container {left:0px !important;max-width:100% !important;} .audio_player_iframe {max-width:100% !important;overflow:hidden !important;} .audio-player.has-art {margin-right:85px !important;} .audio-player .audio-info .track-artist, .icon .icon_pause, .audio-player {color:var(--audio-player-one) !important;} .audio-player .audio-info .track-name, .icon .icon_play{color:var(--audio-player-two) !important;} .audio-player .progress { background:var(--audio-player-progress) !important; } .audio-player .audio-info .track-name {font-size: 18px}';
+            
+            var favorit = document.createElement('link');
+            favorit.type = 'text/css';
+            favorit.rel = 'stylesheet';
+            favorit.href = 'https://assets.tumblr.com/fonts/favorit/stylesheet.css?v=1';
+            style.innerHTML = ':root { --audio-player-bg: ' + bg + '; --audio-player-progress:' + progress + '; --audio-player-one: ' + text + '; --audio-player-two: ' + text + '; } .audio-player{background:var(--audio-player-bg) !important;font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif !important;max-width:100% !important;margin-left:0px !important;} .native-audio-container {left:0px !important;max-width:100% !important;} .audio_player_iframe {max-width:100% !important;overflow:hidden !important;} .audio-player.has-art {margin-right:85px !important;} .audio-player .audio-info .track-artist, .icon .icon_pause, .audio-player {color:var(--audio-player-one) !important;} .audio-player .audio-info .track-name, .icon .icon_play{color:var(--audio-player-two) !important;} .audio-player .progress { background:var(--audio-player-progress) !important; } .audio-player .audio-info .track-name {font-size: 18px}';
+            inside.getElementsByTagName("head")[0].appendChild(favorit);
             inside.getElementsByTagName("head")[0].appendChild(style);
             ele.classList.add("loaded");
       });
