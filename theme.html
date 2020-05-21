@@ -752,7 +752,6 @@ p code { display: inline-block }
     text-align: center;
     font-weight: {TitleFontWeight};
     padding: 10px;
-    margin-top: 15px;
 }
 /*header image*/
 #header {
@@ -1449,8 +1448,8 @@ iframe.tumblr_audio_player.loaded {
 <!--search-->
 <section id="search" role="search">
         <form action="/search" method="get" id="search-form">
-            <input type="text" name="q" value="{SearchQuery}" aria-label="Search Query" id="search-input" placeholder="Search...">
-            <input type="submit" value='' title="Search?" id="search-button">
+            <input type="text" name="q" value="{SearchQuery}" aria-label="Search Query" id="search-input" placeholder="{lang:Search}...">
+            <input type="submit" value='' title="{lang:Search}!" id="search-button">
         </form>
 </section>{/block:ifSearchBar}
 
