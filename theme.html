@@ -500,7 +500,7 @@ Change the version number to whatever version you want if it updates.-->
     --classic-pink: var(--pink);
 }
 
-/* Dashboard Font Favorite, code taken from dashboard main.css */
+/* Dashboard Font Favorite, code taken from dashboard.css */
 @font-face {
     font-family: Favorit;
     src: url(https://assets.tumblr.com/pop/fonts/favorit/favorit-85-8ff1c986.woff2) format("woff2");
@@ -655,7 +655,7 @@ blockquote {
 
 /* Pre & Code */
 pre {
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: "Source Code Pro", "Lucida Console", Monaco, monospace;
     background: #111;
     color: #f1f1f1;
     box-sizing:border-box;
@@ -670,7 +670,7 @@ pre {
 pre a, code a { var(--cyber-text) !important; }
 pre a:hover, code a:hover, pre a:focus, code a:focus { text-decoration: underline !important; }
 code {
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: "Source Code Pro", "Lucida Console", Monaco, monospace;
     background: #111;
     color: #f1f1f1;
     line-height:180%;
@@ -858,23 +858,33 @@ p code { display: inline-block }
     display:flex;
     text-align:center;
     margin:auto;
-	line-height:15px;
 	justify-content:center;
 }
-#search-input {
+#search-wrap {
     font-family: var(--font-family);
     font-weight: bold;
-    padding:5px;
     background:none;
     color: var(--{select:Color Scheme}-post);
-    font-style:italic;
     transition:0.3s;
     border:1px solid var(--{select:Color Scheme}-13);
     background: var(--{select:Color Scheme}-25);
     border-radius:3px;
-    /*max-width: 0px;*/
+    display: flex;
+    align-items: center;
 }
-#search-input:hover, #search-input:focus, #search-form:hover #search-input, #search-form:focus #search-input, #search:focus-within #search-input {
+#search-wrap .fa-search {
+    padding: 0 5px;
+}
+#search-input {
+    font-family: var(--font-family);
+    background:none;
+    color: inherit;
+    border:0;
+    padding:5px;
+    transition:0.3s;
+    font-style:italic;
+}
+#search-wrap:hover, #search-wrap:focus, #search-form:hover #search-wrap, #search-form:focus #search-wrap, #search:focus-within #search-wrap {
     background: var(--{select:Color Scheme}-audio-progress);
     color: var(--{select:Color Scheme}-audio-text);
     border-color: var(--{select:Color Scheme}-25);
@@ -942,7 +952,7 @@ ul.chat {
     margin: 0; padding: 0;
     border-radius: 3px; overflow: hidden;
 }
-ul.chat li { padding: 10px 20px; font-family: "Lucida Console", Monaco, monospace; }
+ul.chat li { padding: 10px 20px; font-family: "Source Code Pro","Lucida Console", Monaco, monospace; }
 ul.chat li:nth-child(odd) { background: var(--{select:Color Scheme}-7); }
 ul.chat li:nth-child(even) { background: var(--{select:Color Scheme}-13); }
 ul.chat .label, a.more_notes_link { font-weight: bold; }
@@ -1483,8 +1493,9 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 <!--search-->
 <section id="search" role="search">
         <form action="/search" method="get" id="search-form">
+        <div id="search-wrap"><span class="fas fa-search" aria-hidden="true"></span>
             <input type="text" name="q" value="{SearchQuery}" aria-label="Search Query" id="search-input" placeholder="{lang:Search}...">
-            <input type="submit" value='' title="{lang:Search}!" id="search-button">
+            </div>
         </form>
 </section>{/block:ifSearchBar}
 
