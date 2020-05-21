@@ -7,6 +7,6 @@ tumblr theme emulating the dashboard's look
 ## WIP:
 - link post styling
 - add headers for search query / tagged pages
-- jump menu for accessibility
+- ~~jump menu for accessibility~~
 
 ## view live [here](https://spectrumtheme.tumblr.com/)
