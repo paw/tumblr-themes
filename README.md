@@ -5,7 +5,7 @@ tumblr theme emulating the dashboard's look
 - Spectrum
 
 ## WIP:
-- link post styling
+- ~~link post styling~~
 - ~~add headers for search query / tagged pages~~
 - ~~jump menu for accessibility~~
 
