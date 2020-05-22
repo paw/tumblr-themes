@@ -791,7 +791,7 @@ p code { display: inline-block }
     display: flex; flex-wrap: wrap;
     justify-content: space-around; margin-top: 15px;
 }
-#links a { flex-grow: 1; border-top:1px solid var(--{select:Color Scheme}-7); display: inline-block;padding:10px 5px; text-align:center; height: 55px; font-size: 22px; display:flex; align-items:center; justify-content:center; text-decoration: none;
+#links a { flex-grow: 1; border-top:1px solid var(--{select:Color Scheme}-7); padding:10px 5px; text-align:center; height: 55px; font-size: 22px; display:flex; align-items:center; justify-content:center; text-decoration: none;
 }
 #links a:nth-child(odd) {background:var(--{select:Color Scheme}-7);border-right: 1px solid var(--{select:Color Scheme}-7);border-left: 1px solid var(--{select:Color Scheme}-7); }
 #links a:nth-child(even) {
@@ -1538,7 +1538,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 {/block:TagPage}
 
 {block:Posts inlineMediaWidth="500"}
-<article class="post" id="post-{PostID}" data-post-id="{PostID}" arial-label="Tumblr Post">
+<article class="post" {block:Date}id="post-{PostID}" data-post-id="{PostID}" arial-label="Tumblr Post"{/block:Date}>
 
 {block:Text}
 {block:Title}<h1 class="post-title wrapper">{Title}</h1>{/block:Title}
