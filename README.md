@@ -8,4 +8,4 @@ Tumblr theme emulating the new dashboard's look and color schemes. I may look at
 - Detailed installation instructions with screenshots for installing any custom theme can be found on [quickguide.tumblr\.com](https://quickguide.tumblr.com/post/34349589516/how-to-install-tumblr-theme-code).
 
 ### Report bugs directly to me by creating an issue OR emailing me at themes@snarl.co.
-# View live demo [here](https://spectrumtheme.tumblr.com/).
+# View the live demo blog [here](https://spectrumtheme.tumblr.com/).
