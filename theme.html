@@ -1003,16 +1003,15 @@ ul.chat .label, a.more_notes_link { font-weight: bold; }
 .datetime { margin: 40px 0 20px 0; position: relative; }
 .post-controls.right .controls > * { margin: 0 0 0 7px; }
 .post-controls.right .controls { margin-left: 3px; }
-.permalink .post-info .fa-clock {
-    margin: 0 8px 0 4px
-}
+.permalink .post-info .fa-clock { margin: 0 8px 0 4px }
+.post-controls.left .fa-thumbtack { margin: 0 4px 0 0 }
 .tags { margin: 5px 0 0 0; }
 .post-controls.right .controls { display: inline-block; }
 {block:ifRainbowPostTypeIcons}
 .post-controls.left .fa-align-left { color: var(--{select:color scheme}-grey); }
 .post-controls.left .fa-camera-retro, .post-controls.left .fa-images { color: var(--{select:color scheme}-red); }
 .post-controls.left .fa-quote-right { color: var(--{select:color scheme}-orange); }
-.post-controls.left .fa-link { color: var(--{select:color scheme}-green); }
+.post-controls.left .fa-link, .post-controls.left .fa-thumbtack { color: var(--{select:color scheme}-green); }
 .post-controls.left .fa-comments, .post-controls.left .fa-envelope { color: var(--{select:color scheme}-blue); }
 .post-controls.left .fa-headphones-alt { color: var(--{select:color scheme}-purple); }
 .post-controls.left .fa-video { color: var(--{select:color scheme}-pink); }
@@ -1683,7 +1682,9 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 <footer class="permalink">
 
 <section class="post-info">
-<div class="post-controls left">{block:text}<span class="fas fa-align-left middle"></span>{/block:text}
+<div class="post-controls left">
+    {block:PinnedPostLabel}<span class="fas fa-thumbtack middle" title="{PinnedPostLabel}"></span>{/block:PinnedPostLabel}
+    {block:text}<span class="fas fa-align-left middle"></span>{/block:text}
     {block:quote}<span class="fas fa-quote-right middle" aria-label="Text Post"></span>{/block:quote}
     {block:link}<span class="fas fa-link middle" aria-label="Link Post"></span>{/block:link}
     {block:photo}<span class="fas fa-camera-retro middle" aria-label="Photo Post"></span>{/block:photo}
