@@ -1715,7 +1715,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 {block:NoteCount} <a href="{Permalink}#notes" class="middle">{NoteCountWithLabel}</a>{/block:NoteCount}
 
 <div class="controls">
-<div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Share{block:Reblog} and Source{/block:Reblog} Links." role="button"></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post." target="_blank">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}" target="_blank">{lang:Source}</a></li>{/block:ContentSource}<li><a href="{EmbedUrl}" class="share-item permalink" target="_blank">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
+<div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Share{block:Reblog} and Source{/block:Reblog} Links."></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post." target="_blank">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}" target="_blank">{lang:Source}</a></li>{/block:ContentSource}<li><a href="{EmbedUrl}" class="share-item permalink" target="_blank">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
 
 <a href="{ReblogURL}" target="_blank" class="details" aria-label="Reblog this post."><span class="fas fa-retweet middle"></span></a>
 
@@ -1728,7 +1728,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 
 
 {block:HasTags}
-<section class="tags"><span class="fas fa-tags middle"></span>{block:Tags}<span class="sr-only">Post Tags:</span>
+<section class="tags"><span class="fas fa-tags middle"></span><span class="sr-only">Post Tags:</span>{block:Tags}
 &nbsp;<a href="{TagURL}" aria-label="Hashtag {Tag}.">#{Tag}</a>{/block:Tags}</section>{/block:HasTags}
 
 <!-- end info -->
