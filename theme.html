@@ -791,8 +791,9 @@ p code { display: inline-block }
     display: flex; flex-wrap: wrap;
     justify-content: space-around; margin-top: 15px;
 }
-#links a { flex-grow: 1; border-top:1px solid var(--{select:Color Scheme}-7); padding:10px 5px; text-align:center; height: 55px; font-size: 22px; display:flex; align-items:center; justify-content:center; text-decoration: none;
+#links a { flex-grow: 1; border-top:1px solid var(--{select:Color Scheme}-7); padding:10px 5px; text-align:center; height: 55px; font-size: 22px; display: flex; align-items:center; justify-content:center; text-decoration: none;
 }
+#links a .linktitle { margin-left:5px; }
 #links a:nth-child(odd) {background:var(--{select:Color Scheme}-7);border-right: 1px solid var(--{select:Color Scheme}-7);border-left: 1px solid var(--{select:Color Scheme}-7); }
 #links a:nth-child(even) {
     background:var(--{select:Color Scheme}-13);
@@ -1347,6 +1348,19 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 .custom-icon { display: none; }
 .hide + .custom-icon { display: inline-block; }
 .mobile-show { display: none }
+.sr-only { /*for any text you only want screenreaders to access*/	
+	border: 0 !important;	
+	clip: rect(1px, 1px, 1px, 1px) !important;	
+	-webkit-clip-path: inset(50%) !important;	
+	clip-path: inset(50%) !important;	
+	height: 1px !important;	
+	margin: -1px !important;	
+	overflow: hidden !important;	
+	padding: 0 !important;	
+	position: absolute !important;	
+	width: 1px !important;	
+	white-space: nowrap !important;	
+}
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1300px) {
@@ -1358,6 +1372,7 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
     }
 }
 @media screen and (max-width: 1100px) {
+    .linktitle.mobile-show { display: block;}
     .pagination.mobile-show { display: flex; margin: auto; }
     .pagination.mobile-hide, .accessibility-skip.mobile-hide { display: none }
     .accessibility-skip.mobile-show { display: flex; }
@@ -1466,32 +1481,32 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
         </div>
     {/block:ifOverrideTumblrAppearanceSettings}
 	
-    <nav id="links">
-        {block:iflink1url}<a href="{text:link 1 url}" title="{text:link 1 title}" aria-label="{text:link 1 title}"><span class="{select:link 1 icon}"></span><span class="custom-icon {text:link 1 custom icon}"></span></a>
+    <nav id="links" aria-label="Main Navigation">
+        {block:iflink1url}<a href="{text:link 1 url}" title="{text:link 1 title}" aria-label="{text:link 1 title}"><span class="{select:link 1 icon}"></span><span class="custom-icon {text:link 1 custom icon}"></span><span class="linktitle mobile-show">{text:link 1 title}</span></a>
         {/block:iflink1url}
         
         {block:iflink2url}
-        <a href="{text:link 2 url}" title="{text:link 2 title}" aria-label="{text:link 2 title}"><span class="{select:link 2 icon}"></span><span class="custom-icon {text:link 2 custom icon}"></span></a>
+        <a href="{text:link 2 url}" title="{text:link 2 title}" aria-label="{text:link 2 title}"><span class="{select:link 2 icon}"></span><span class="custom-icon {text:link 2 custom icon}"></span><span class="linktitle mobile-show">{text:link 2 title}</span></a>
         {/block:iflink2url}
         
         {block:iflink3url}
-        <a href="{text:link 3 url}" title="{text:link 3 title}" aria-label="{text:link 3 title}"><span class="{select:link 3 icon}"></span><span class="custom-icon {text:link 3 custom icon}"></span></a>
+        <a href="{text:link 3 url}" title="{text:link 3 title}" aria-label="{text:link 3 title}"><span class="{select:link 3 icon}"></span><span class="custom-icon {text:link 3 custom icon}"></span><span class="linktitle mobile-show">{text:link 3 title}</span></a>
         {/block:iflink3url}
         
         {block:iflink4url}
-        <a href="{text:link 4 url}" title="{text:link 4 title}" aria-label="{text:link 4 title}"><span class="{select:link 4 icon}"></span><span class="custom-icon {text:link 4 custom icon}"></span></a>
+        <a href="{text:link 4 url}" title="{text:link 4 title}" aria-label="{text:link 4 title}"><span class="{select:link 4 icon}"></span><span class="custom-icon {text:link 4 custom icon}"></span><span class="linktitle mobile-show">{text:link 4 title}</span></a>
         {/block:iflink4url}
         
         {block:iflink5url}
-        <a href="{text:link 5 url}" title="{text:link 5 title}" aria-label="{text:link 5 title}"><span class="{select:link 5 icon}"></span><span class="custom-icon {text:link 5 custom icon}"></span></a>
+        <a href="{text:link 5 url}" title="{text:link 5 title}" aria-label="{text:link 5 title}"><span class="{select:link 5 icon}"></span><span class="custom-icon {text:link 5 custom icon}"></span><span class="linktitle mobile-show">{text:link 5 title}</span></a>
         {/block:iflink5url}
         
         {block:iflink6url}
-        <a href="{text:link 6 url}" title="{text:link 6 title}" aria-label="{text:link 6 title}"><span class="{select:link 6 icon}"></span><span class="custom-icon {text:link 6 custom icon}"></span></a>
+        <a href="{text:link 6 url}" title="{text:link 6 title}" aria-label="{text:link 6 title}"><span class="{select:link 6 icon}"></span><span class="custom-icon {text:link 6 custom icon}"></span><span class="linktitle mobile-show">{text:link 6 title}</span></a>
         {/block:iflink6url}
         
         {block:iflink7url}
-        <a href="{text:link 7 url}" title="{text:link 7 title}"><span class="{select:link 7 icon}" aria-label="{text:link 7 title}"></span><span class="custom-icon {text:link 7 custom icon}"></span></a>
+        <a href="{text:link 7 url}" title="{text:link 7 title}"><span class="{select:link 7 icon}" aria-label="{text:link 7 title}"></span><span class="custom-icon {text:link 7 custom icon}"></span><span class="linktitle mobile-show">{text:link 7 title}</span></a>
         {/block:iflink7url}
     </nav>
 </section> <!-- end blog info -->
@@ -1679,20 +1694,21 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 
 {block:Date}
 <!-- post footer -->
-<footer class="permalink">
+<footer class="permalink" aria-label="Post Footer">
 
 <section class="post-info">
 <div class="post-controls left">
-    {block:PinnedPostLabel}<span class="fas fa-thumbtack middle" title="{PinnedPostLabel}"></span>{/block:PinnedPostLabel}
+    {block:PinnedPostLabel}<span class="fas fa-thumbtack middle"></span><span class="sr-only">{PinnedPostLabel}</span>{/block:PinnedPostLabel}
     {block:text}<span class="fas fa-align-left middle"></span>{/block:text}
-    {block:quote}<span class="fas fa-quote-right middle" aria-label="Text Post"></span>{/block:quote}
-    {block:link}<span class="fas fa-link middle" aria-label="Link Post"></span>{/block:link}
-    {block:photo}<span class="fas fa-camera-retro middle" aria-label="Photo Post"></span>{/block:photo}
-    {block:photoset}<span class="fas fa-images middle" aria-label="Photo Set Post"></span>{/block:photoset}
-    {block:video}<span class="fas fa-video middle" aria-label="Video Post"></span>{/block:video}
-    {block:audio}<span class="fas fa-headphones-alt middle" aria-label="Audio Post"></span>{/block:audio}
-    {block:chat}<span class="fas fa-comments middle" aria-label="Chat Post"></span>{/block:chat}
-    {block:answer}<span class="fas fa-envelope middle" aria-label="Ask Post"></span>{/block:answer}<i class="fas fa-clock middle"></i><a href="{Permalink}" title="{lang:Posted on DayOfMonth Month Year}" class="middle inline-block">{TimeAgo}</a></div><!--title="{ShortMonth} {DayOfMonthWithZero}, {Year}. {12HourWithZero}:{Minutes}{AmPm}."-->
+    {block:quote}<span class="fas fa-quote-right middle"></span>{/block:quote}
+    {block:link}<span class="fas fa-link middle"></span>{/block:link}
+    {block:photo}<span class="fas fa-camera-retro middle"></span>{/block:photo}
+    {block:photoset}<span class="fas fa-images middle"></span>{/block:photoset}
+    {block:video}<span class="fas fa-video middle"></span>{/block:video}
+    {block:audio}<span class="fas fa-headphones-alt middle"></span>{/block:audio}
+    {block:chat}<span class="fas fa-comments middle"></span>{/block:chat}
+    {block:answer}<span class="fas fa-envelope middle"></span>{/block:answer}
+    <i class="fas fa-clock middle"></i><a href="{Permalink}" title="{lang:Posted on DayOfMonth Month Year}" class="middle inline-block">{TimeAgo}</a></div><!--title="{ShortMonth} {DayOfMonthWithZero}, {Year}. {12HourWithZero}:{Minutes}{AmPm}."-->
 
 <div class="post-controls right">
 
@@ -1701,9 +1717,9 @@ hr { border: 0px; border-bottom: 2px solid var(--{select:Color Scheme}-accent);}
 <div class="controls">
 <div class="post-menu"><span class="fas fa-ellipsis-h middle" id="post-menu-{PostID}" tabindex="0" aria-label="Informational Links Relating to this post."></span><div id="menu-content-{PostID}" class="menu-content"><ul>{block:RebloggedFrom}<li><a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}" aria-label="Reblog post." target="_blank">{lang:Via}</a></li>{/block:RebloggedFrom}{block:ContentSource}<li><a href="{SourceURL}" title="{lang:Originally from ReblogRootName}" target="_blank">{lang:Source}</a></li>{/block:ContentSource}<li><a href="{EmbedUrl}" class="share-item permalink" target="_blank">{lang:Embed}</a></li><li><a href="{Permalink}">{lang:Permalink}</a></li></ul></div></div>
 
-<a href="{ReblogURL}" target="_blank" class="details"><span class="fas fa-retweet middle"></span></a>
+<a href="{ReblogURL}" target="_blank" class="details" aria-label="Reblog this post."><span class="fas fa-retweet middle"></span></a>
 
-<div class="custom-like-button" aria-label="Interact with the like iframe to like the post." role="button">
+<div class="custom-like-button" aria-label="Like this post." role="button">
   {LikeButton}
 </div></div>
 
