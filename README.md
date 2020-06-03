@@ -11,8 +11,9 @@ Tumblr theme emulating the new dashboard's look and color schemes. I may look at
 # View the live demo blog [here](https://spectrumtheme.tumblr.com/).
 
 
+---------
 
 
-
-#### tba:
-- tippy tooltips v5?
+#### potential upcoming features:
+- tippy tooltips v5
+- js to switch between the color schemes on the fly
