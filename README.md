@@ -9,3 +9,10 @@ Tumblr theme emulating the new dashboard's look and color schemes. I may look at
 
 ### Report bugs directly to me by creating an issue OR emailing me at themes@snarl.co.
 # View the live demo blog [here](https://spectrumtheme.tumblr.com/).
+
+
+
+
+
+#####tba:
+- tippy tooltips v5?
