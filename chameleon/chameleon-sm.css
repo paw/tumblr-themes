@@ -1,0 +1,107 @@
+/*
+
+chameleon by snarl
+
+small screen layout
+
+*/
+
+#side {
+	width: var(--post-width);
+	position:static;
+	margin:60px auto;
+	padding:0px 5px 0px 0px;
+}
+
+#links {
+	width: 100%;
+}
+body.tmblr-iframe-pushdown #side {
+	padding-top:0px;
+	margin:60px auto;
+	max-height:unset;
+}
+
+#side #links a {
+	margin: 0 5px;
+}
+#search {
+	order:0;
+	max-width:100%;
+	margin: 0px auto 25px auto;
+}
+#search-input {
+	max-width:calc(100% - 60px);
+}
+#desc-wrap {
+	max-height:150px;
+}
+
+#blog-info {
+	flex-wrap:wrap;
+}
+#blog-title {
+	min-width:calc(100% - 60px);
+	width:unset;
+}
+
+.post, #pagination {
+	left:0px;
+}
+
+.big-side-t {
+	display:none;
+}
+.small-side-t {
+	display: flex;
+}
+.small-side-l {
+	display:block;
+}
+#side-image-wrapper {
+	width:40%;
+	height: 100%;
+	box-sizing:border-box;
+	padding:0px 5px;
+}
+.side-img, .side-header {
+	max-width:100%;
+	max-height: 150px;
+	vertical-align:middle;
+	display:inline-block;
+	box-sizing:border-box;
+}
+.side-img {
+	max-height: 200px;
+}
+#desc {
+	box-sizing:border-box;
+	height: 100%;
+	width:60%;
+	padding:0px 0px 0px 5px;
+	white-space: normal;
+}
+#desc > * {
+	max-width:100%;
+	box-sizing:border-box;
+}
+.mobile-hide {
+	display:none;
+}
+.title-show {
+	display:block;
+}
+#accessibility-skip-wrap-top, #accessibility-skip-wrap-bottom {
+	left:calc(50% - 110px) !important;
+}
+#accessibility-skip-wrap-top .accessibility-skip:focus, #accessibility-skip-wrap-top .accessibility-skip:hover  {
+	top:65px;
+}
+	
+#credit {
+	position:static;
+	width:100%;
+	display:flex;
+	justify-content:center;
+	padding:0px 0px 10px 0px;
+}
