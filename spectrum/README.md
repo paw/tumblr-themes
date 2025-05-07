@@ -7,7 +7,7 @@ Tumblr theme emulating the new dashboard's look and color schemes. I may look at
 - The full theme code can be found in theme.html, just view the file, click 'raw', and copy the entire page, and then paste it over your exisiting theme's code.
 - Detailed installation instructions with screenshots for installing any custom theme can be found on [quickguide.tumblr\.com](https://quickguide.tumblr.com/post/34349589516/how-to-install-tumblr-theme-code).
 
-### Report bugs directly to me by creating an issue OR emailing me at themes@snarl.co.
+### Report bugs directly to me by creating an issue OR emailing me at themes@snarly.net
 # View the live demo blog [here](https://spectrumtheme.tumblr.com/).
 
 
