@@ -1,0 +1,18 @@
+/*
+
+chameleon
+
+xtra small screen layout
+
+*/
+
+#toggle-tumblr-controls {top:60px;right:unset;left:0px;}
+.btn-closed {transform:translateY(-18px);}
+.post, .perma, #side {width: 100%;box-sizing:border-box;}
+#side {padding: 0px 20px;}
+#pagination {left:0px;width:100%;}
+[photoset-layout] div {display:initial;}
+.lightbox-image-container {max-width:100%;}
+.p-time, .p-date, .p-notes {display:none;}
+.mobile-show {display:inline-block;}
+@media (max-width: 500px) { #search-input {width:auto} }
